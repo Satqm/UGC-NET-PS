@@ -228,6 +228,19 @@ body.desktop-view #btnPalette{display:none}
 .wr-empty{text-align:center;padding:44px 20px;color:#94a3b8;font-size:.88rem}
 
 .theme-chip{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:3px 9px;border-radius:20px;background:linear-gradient(135deg,#eef2ff,#e0e7ff);color:#4f46e5;margin-bottom:8px}
+
+/* Match-question table */
+.match-table-wrap{margin:8px 0 4px;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:#fff}
+.match-table{width:100%;border-collapse:collapse;font-size:.8rem}
+.match-table th{background:#f1f5f9;font-weight:700;font-size:.68rem;text-transform:uppercase;letter-spacing:.5px;color:#475569;padding:8px 10px;text-align:left;border-bottom:1px solid var(--border)}
+.match-table td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;color:var(--text)}
+.match-table tr:last-child td{border-bottom:none}
+.match-table tr:nth-child(even) td{background:#f8fafc}
+.match-table td.mt-num{text-align:center;font-weight:800;color:#2563eb;background:#eff6ff;width:32px}
+.match-table td.mt-letter{text-align:center;font-weight:800;color:#7c3aed;background:#f5f3ff;width:32px}
+.match-table tr:nth-child(even) td.mt-num{background:#dbeafe}
+.match-table tr:nth-child(even) td.mt-letter{background:#ede9fe}
+.match-header-line{font-weight:600;font-size:.84rem;margin-bottom:6px;color:var(--text)}
 </style>
 </head>
 <body>
@@ -553,6 +566,74 @@ let totalAnsweredGlobally = parseInt(localStorage.getItem('polsci_totalAnswered'
 const $ = id => document.getElementById(id);
 const esc = s => String(s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
+// ----- Match-question parser -----
+function parseMatchQuestion(text){
+  if (!text) return null;
+  if (!/\bmatch\b/i.test(text.slice(0, 300))) return null;
+
+  const lines = text.split('\n');
+  const rows = [];
+  let headerLines = [];
+  let headerDone = false;
+
+  for (const raw of lines){
+    const line = raw.trim();
+    if (!line) continue;
+    // "1. Aristotle A. Justice as perfect obligation"
+    const m = line.match(/^(\d+)\s*[\.\)]\s*(.+?)\s+([A-J])\s*[\.\)]\s*(.+)$/);
+    if (m){
+      headerDone = true;
+      rows.push({
+        num:   m[1].trim(),
+        left:  m[2].trim(),
+        letter:m[3].trim(),
+        right: m[4].trim()
+      });
+    } else if (!headerDone){
+      headerLines.push(line);
+    } else {
+      // continuation of a right-side value that wrapped to next line
+      if (rows.length) rows[rows.length-1].right += ' ' + line;
+    }
+  }
+  if (rows.length < 3) return null;  // not a match-type question
+  return { header: headerLines.join(' ').trim(), rows };
+}
+
+// ----- Render a parsed match question as an HTML table -----
+function buildMatchTableHTML(match){
+  const esc0 = s => String(s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  let html = '';
+  if (match.header){
+    html += '<div class="match-header-line">' + esc0(match.header) + '</div>';
+  }
+  html += '<div class="match-table-wrap"><table class="match-table">';
+  html += '<thead><tr>';
+  html += '<th style="width:36px;text-align:center">#</th>';
+  html += '<th>List I</th>';
+  html += '<th style="width:36px;text-align:center">#</th>';
+  html += '<th>List II</th>';
+  html += '</tr></thead><tbody>';
+  match.rows.forEach(r => {
+    html += '<tr>';
+    html += '<td class="mt-num">' + esc0(r.num) + '</td>';
+    html += '<td>' + esc0(r.left) + '</td>';
+    html += '<td class="mt-letter">' + esc0(r.letter) + '</td>';
+    html += '<td>' + esc0(r.right) + '</td>';
+    html += '</tr>';
+  });
+  html += '</tbody></table></div>';
+  return html;
+}
+
+// ----- One-call formatter that returns HTML for any question -----
+function formatQuestionText(q){
+  if (!q) return '';
+  const match = parseMatchQuestion(q.question || '');
+  if (match) return buildMatchTableHTML(match);
+  return esc(q.question || '');
+}
+
 function showLoader(t){ $('loaderText').textContent = t; $('loader').style.display = 'flex'; }
 function hideLoader(){ $('loader').style.display = 'none'; }
 function switchScreen(id){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); $(id).classList.add('active'); if(id==='welcomeScreen') refreshWelcomeStats(); }
@@ -609,7 +690,7 @@ async function toggleBookmarkDB(id,q,on){
   return new Promise(res=>{
     const tx = db.transaction(WRONG_STORE,'readwrite');
     const st = tx.objectStore(WRONG_STORE);
-    if(!on){ // remove bookmark only; but keep if it's a wrong question too — easier: keep marker
+    if(!on){
       tx.oncomplete = res; return;
     }
     const rq = st.get(id);
@@ -629,12 +710,9 @@ async function toggleBookmarkDB(id,q,on){
 }
 
 // ================= DATA LOADING =================
-// Expected data.json: array of {id, section, theme, set, question, options:[...], correctOption:"A"|"B"..., explanation}
 function normalizeQuestion(raw, idx){
   const opts = Array.isArray(raw.options) ? raw.options.map(o => String(o)) : [];
-  // strip "A. " / "A) " prefixes
   const stripped = opts.map(o => o.replace(/^\s*[A-J]\s*[\.\)]\s*/, ''));
-  // map correctOption letter to index
   let ci = 0;
   const co = raw.correctOption || raw.correct || raw.answer;
   if(typeof co === 'string'){
@@ -760,10 +838,8 @@ function renderQuestion(){
   if(!q) return;
   STATE.isAnswered = false;
   const st = STATE.session[STATE.currentIdx];
-  // question header
   const chip = q.theme ? `<span class="theme-chip">${esc(q.theme)}</span>` : '';
-  $('questionDisplay').innerHTML = `${chip}<div class="question-text"><span class="q-number">Q${esc(String(q.qNum))}.</span> ${esc(q.question)}</div>`;
-  // options
+  $('questionDisplay').innerHTML = `${chip}<div class="question-text"><span class="q-number">Q${esc(String(q.qNum))}.</span> ${formatQuestionText(q)}</div>`;
   const oa = $('optionsDisplay');
   oa.innerHTML = '';
   q.options.forEach((o,i) => {
@@ -1011,7 +1087,7 @@ window.openFullscreenReader = function(){
   const chip = q.theme ? `<span class="theme-chip">${esc(q.theme)}</span><br>` : '';
   let html = chip;
   html += `<h3 style="color:var(--text);margin-bottom:10px;font-weight:700;font-size:.95rem">Question ${esc(String(q.qNum))}</h3>`;
-  html += `<div id="readerQuestion" class="highlightable" style="font-size:1rem;margin-bottom:16px;line-height:1.6">${esc(q.question)}</div>`;
+  html += `<div id="readerQuestion" class="highlightable" style="font-size:1rem;margin-bottom:16px;line-height:1.6">${formatQuestionText(q)}</div>`;
   html += '<div class="options-list" id="readerOptions" style="margin-bottom:24px">';
   q.options.forEach((o,i) => {
     let extra = '';
@@ -1134,7 +1210,6 @@ window.selectHighlightColor = function(btn){
   if(!range && pendingRange && (Date.now() - pendingTime < 4000)){ range = pendingRange; container = pendingContainer; }
   if(range){
     if(color === 'transparent'){
-      // quick erase: unwrap overlapping spans
       const spans = container.querySelectorAll('.user-highlight');
       let erased = false;
       spans.forEach(sp => {
@@ -1311,7 +1386,7 @@ function renderWrongCarousel(){
         <button class="wr-remove" onclick="removeWrongFromCarousel('${it.id}')"><i class="fa-solid fa-xmark"></i></button>
       </div>
       ${it.theme ? '<div style="font-size:.68rem;color:#64748b;font-weight:700;text-transform:uppercase;margin-bottom:6px">'+esc(it.theme)+'</div>' : ''}
-      <div class="wr-question">${esc(it.question)}</div>
+      <div class="wr-question">${formatQuestionText(it)}</div>
       <div class="wr-options">${optsHtml}</div>
       ${explain}
     </div>`;
@@ -1370,7 +1445,7 @@ function renderBookmarks(){
         <span class="wc-meta">${esc(it.set || '')}</span>
       </div>
       ${it.theme ? '<div style="font-size:.68rem;color:#64748b;font-weight:700;text-transform:uppercase;margin-bottom:6px">'+esc(it.theme)+'</div>' : ''}
-      <div class="wr-question">${esc(it.question)}</div>
+      <div class="wr-question">${formatQuestionText(it)}</div>
       <div class="wr-options">${optsHtml}</div>
       ${explain}
     </div>`;
