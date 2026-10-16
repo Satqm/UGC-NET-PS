@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<title>MCQ Astra · UGC NET Political Science</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap');
+
+:root {
+    --bg:#f1f5f9; --surface:#fff; --text:#0f172a; --text-secondary:#475569; --border:#e2e8f0;
+    --primary:#2563eb; --primary-light:#dbeafe; --correct:#059669; --correct-bg:#d1fae5;
+    --wrong:#dc2626; --wrong-bg:#fee2e2; --marked:#d97706; --marked-bg:#fef3c7;
+    --unattempted:#94a3b8; --study-badge:#7c3aed; --study-badge-bg:#f3e8ff;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);user-select:none;-webkit-user-select:none;transition:background .3s ease}
+.reader-content,.highlightable{user-select:text;-webkit-user-select:text}
+.app-container{display:flex;flex-direction:column;height:100dvh;max-width:500px;margin:0 auto;background:var(--bg);position:relative}
+body.desktop-view{background:#cbd5e1;padding:16px;display:flex;align-items:center;justify-content:center}
+body.desktop-view .app-container{max-width:1400px;width:100%;height:calc(100vh - 32px);border-radius:22px;box-shadow:0 25px 60px -12px rgba(0,0,0,.3);overflow:hidden;background:var(--bg);display:flex;flex-direction:column}
+body.desktop-view .header{margin:14px 18px 0;padding:14px 22px;border-radius:16px}
+body.desktop-view .bottom-nav{margin:0 18px 16px;padding:10px 20px;border-radius:16px;z-index:10}
+body.desktop-view .stats-bar{margin:0 18px 4px;padding:8px 16px;border-radius:12px}
+body.desktop-view .main-content{padding:20px 28px;display:flex;flex-direction:row;gap:28px;height:100%;overflow:hidden}
+body.desktop-view #quizArea{flex:1;display:flex;flex-direction:column;gap:20px;max-width:100%;margin:0 auto;height:100%;overflow-y:auto;padding-right:10px;scrollbar-width:thin}
+body.desktop-view #questionAndOptionsContainer{flex:1;display:flex;flex-direction:column;max-width:720px;margin:0 auto;width:100%;gap:14px;overflow-y:auto;padding-right:10px;scrollbar-width:thin}
+.desktop-sidebar-wrapper{display:contents}
+.desktop-sidebar-title{display:none}
+body.desktop-view .desktop-sidebar-wrapper{display:flex;flex-direction:column;width:320px;flex-shrink:0;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px;height:100%;box-shadow:0 4px 16px rgba(0,0,0,.04);overflow:hidden}
+body.desktop-view .desktop-sidebar-wrapper.hidden{display:none}
+body.desktop-view .desktop-sidebar-title{display:block;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--border);text-align:center;font-family:'Poppins',sans-serif}
+body.desktop-view .dots-container{flex:1;display:grid;grid-template-columns:repeat(auto-fill,minmax(44px,1fr));gap:7px;align-content:start;overflow-y:auto;padding:4px;scrollbar-width:thin}
+body.desktop-view #btnPalette{display:none}
+
+.welcome-hero{
+    position:relative;z-index:1;flex:0 0 auto;
+    padding:48px 22px 60px;
+    padding-top:max(48px, calc(env(safe-area-inset-top, 0px) + 30px));
+    text-align:center;
+    background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 55%,#3b82f6 100%);
+    color:#fff;border-radius:0 0 26px 26px;
+    box-shadow:0 12px 32px rgba(37,99,235,.28);
+    overflow:hidden;
+}
+.welcome-hero::before{content:'';position:absolute;top:-60px;right:-60px;width:180px;height:180px;background:radial-gradient(circle,rgba(255,255,255,.16),transparent 70%);border-radius:50%;pointer-events:none}
+.brand-lockup{display:inline-flex;align-items:center;gap:11px;position:relative;z-index:2}
+.brand-icon-sm{width:44px;height:44px;border-radius:13px;background:rgba(255,255,255,.16);border:1.5px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:1.2rem;backdrop-filter:blur(10px)}
+.brand-text{font-family:'Poppins',sans-serif;font-weight:800;font-size:1.7rem;letter-spacing:-.6px;line-height:1;display:flex;align-items:baseline;gap:6px}
+.brand-mcq{color:#fff}
+.brand-astra{background:linear-gradient(90deg,#fbbf24 0%,#f59e0b 50%,#fbbf24 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite 1s}
+@keyframes shimmer{0%{background-position:0% center}100%{background-position:200% center}}
+.brand-sub{font-size:.68rem;font-weight:600;letter-spacing:.7px;text-transform:uppercase;opacity:.92;margin-top:14px;position:relative;z-index:2}
+
+.welcome-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:0 18px;margin-top:-24px;margin-bottom:16px;position:relative;z-index:3;flex:0 0 auto}
+.wstat{background:#fff;border:1px solid var(--border);border-radius:14px;padding:12px 8px;text-align:center;box-shadow:0 6px 16px rgba(15,23,42,.08);cursor:pointer}
+.wstat:active{transform:scale(.95)}
+.wstat-val{font-family:'Poppins',sans-serif;font-size:1.3rem;font-weight:800;line-height:1.1;letter-spacing:-.5px}
+.wstat-lbl{font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--text-secondary)}
+
+.screen{display:none;height:100%;width:100%;flex-direction:column;overflow-y:auto;padding-bottom:16px}
+.screen.active{display:flex}
+.mode-cards{padding:0 18px;display:flex;flex-direction:column;gap:12px;flex:1}
+.mode-card{background:var(--surface);border:2px solid var(--border);border-radius:18px;padding:18px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:14px;position:relative;overflow:hidden}
+.mode-card:active{transform:scale(.97)}
+.mode-card.s1{border-color:#bfdbfe;background:#eff6ff}
+.mode-card.s2{border-color:#c4b5fd;background:#f5f3ff}
+.mode-card.s3{border-color:#fcd34d;background:#fffbeb}
+.mode-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#fff;flex-shrink:0}
+.s1 .mode-icon{background:linear-gradient(135deg,#3b82f6,#1d4ed8)}
+.s2 .mode-icon{background:linear-gradient(135deg,#8b5cf6,#6d28d9)}
+.s3 .mode-icon{background:linear-gradient(135deg,#f59e0b,#d97706)}
+.mode-text{flex:1;text-align:left}
+.mode-text h3{font-family:'Poppins',sans-serif;font-size:1.05rem;font-weight:700;color:#1e293b;margin-bottom:3px}
+.mode-text p{font-size:.78rem;color:var(--text-secondary);line-height:1.35}
+.mode-count{display:inline-flex;align-items:center;gap:4px;font-size:.62rem;font-weight:700;color:#475569;background:rgba(255,255,255,.75);border:1px solid rgba(15,23,42,.08);padding:2px 8px;border-radius:20px;margin-top:6px}
+.section-title{padding:20px 20px 6px;font-family:'Poppins',sans-serif;font-size:.72rem;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:#64748b;display:flex;align-items:center;gap:8px}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.tools-section{padding:20px 18px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tool-btn{background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center;cursor:pointer;transition:.2s}
+.tool-btn:active{transform:scale(.95)}
+.tool-btn i{font-size:1.4rem;margin-bottom:6px;color:var(--primary)}
+.tool-btn h4{font-size:.8rem;font-weight:600;color:var(--text)}
+
+.header{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;margin:10px 12px 0;background:#fff;border-radius:14px;border:1px solid var(--border);flex-shrink:0;box-shadow:0 4px 14px rgba(15,23,42,.04)}
+.header-left{display:flex;align-items:center;gap:9px;min-width:0}
+.home-btn{width:36px;height:36px;border-radius:10px;background:#f1f5f9;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-secondary);cursor:pointer;font-size:.85rem;flex-shrink:0}
+.header-title{min-width:0}
+.header-title h2{font-size:.88rem;font-weight:800;color:var(--text);line-height:1.2;font-family:'Poppins',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.header-title p{font-size:.62rem;color:var(--text-secondary);text-transform:uppercase;font-weight:600;letter-spacing:.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.study-badge-inline{display:none;font-size:.58rem;font-weight:700;color:var(--study-badge);background:var(--study-badge-bg);border:1px solid #d8b4fe;padding:2px 7px;border-radius:20px;margin-left:6px;white-space:nowrap}
+.study-badge-inline.show{display:inline-block}
+.header-actions{display:flex;gap:6px;flex-shrink:0}
+.icon-btn{width:36px;height:36px;border-radius:10px;border:1.5px solid var(--border);background:#f8fafc;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.8rem;color:var(--text-secondary);flex-shrink:0}
+.icon-btn.lifeline{background:#eff6ff;border-color:#93c5fd;color:var(--primary)}
+.icon-btn.retake{background:#fef2f2;border-color:#fca5a5;color:#ef4444}
+.icon-btn.desktop-toggle{background:#f3e8ff;border-color:#d8b4fe;color:#9333ea}
+.icon-btn.study-toggle{background:#faf5ff;border-color:#d8b4fe;color:#7c3aed;transition:all .25s}
+.icon-btn.study-toggle.active{background:#7c3aed;border-color:#7c3aed;color:#fff;box-shadow:0 0 0 3px rgba(124,58,237,.3)}
+.icon-btn.reader-mode{background:#ecfdf5;border-color:#6ee7b7;color:#059669}
+.icon-btn.settings-btn{background:#eef2ff;border-color:#c7d2fe;color:#4f46e5}
+.icon-btn.bookmark-btn{background:#fef3c7;border-color:#fcd34d;color:#b45309;transition:all .25s}
+.icon-btn.bookmark-btn.active{background:linear-gradient(135deg,#fbbf24,#f59e0b);border-color:#f59e0b;color:#fff;box-shadow:0 0 0 3px rgba(251,191,36,.3)}
+@media (max-width: 900px) {
+    body:not(.desktop-view) .header-actions .icon-btn:not(.settings-btn):not(.bookmark-btn){display:none}
+}
+.main-content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:8px 10px;min-height:0;position:relative}
+.question-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px;margin-bottom:8px;box-shadow:0 1px 3px rgba(0,0,0,.03);position:relative;cursor:pointer}
+.question-text{font-size:.88rem;line-height:1.6;color:var(--text);padding-right:28px}
+.question-text .q-number{color:var(--primary);font-weight:700;font-size:.82rem}
+.option-btn{display:flex;align-items:flex-start;gap:10px;width:100%;padding:11px 13px;background:var(--surface);border:2px solid var(--border);border-radius:11px;font-size:.85rem;cursor:pointer;text-align:left;transition:all .2s;line-height:1.45;margin-bottom:7px}
+.option-btn:active:not(:disabled){transform:scale(.98);border-color:var(--primary)}
+.option-letter{width:30px;height:30px;border-radius:7px;background:#f1f5f9;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;flex-shrink:0;color:var(--text-secondary);transition:all .2s}
+.option-btn.correct{border-color:var(--correct)!important;background:var(--correct-bg)!important}
+.option-btn.correct .option-letter{background:#a7f3d0;border-color:var(--correct);color:var(--correct)}
+.option-btn.wrong{border-color:var(--wrong)!important;background:var(--wrong-bg)!important}
+.option-btn.wrong .option-letter{background:#fecaca;border-color:var(--wrong);color:var(--wrong)}
+.option-btn.selected{border-color:var(--marked)!important;background:var(--marked-bg)!important}
+.option-btn:disabled{cursor:default;opacity:.92}
+.option-btn.study-correct-preview{border-color:var(--correct)!important;background:var(--correct-bg)!important}
+
+.study-explanation-panel{margin-top:12px;padding:14px 15px;background:linear-gradient(135deg,#fffbeb 0%,#fef3c7 100%);border:1.5px solid #fcd34d;border-radius:12px}
+.study-explanation-panel .sep-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;font-family:'Poppins',sans-serif;font-weight:800;font-size:.78rem;color:#92400e;text-transform:uppercase;letter-spacing:.6px}
+.study-explanation-panel .sep-correct{font-size:.84rem;font-weight:700;color:#065f46;background:rgba(255,255,255,.7);border:1px solid #a7f3d0;padding:8px 10px;border-radius:8px;margin-bottom:10px;display:flex;align-items:flex-start;gap:7px;line-height:1.5}
+.study-explanation-panel .sep-correct .sep-tag{background:#059669;color:#fff;font-size:.6rem;font-weight:800;padding:2px 7px;border-radius:20px;letter-spacing:.4px;flex-shrink:0;margin-top:1px}
+.study-explanation-panel .sep-body{font-size:.84rem;line-height:1.7;color:#334155}
+
+.dots-container{display:flex;gap:6px;overflow-x:auto;padding:10px 2px;scrollbar-width:none}
+.dots-container::-webkit-scrollbar{display:none}
+.dot-btn{min-width:38px;width:38px;height:38px;border-radius:9px;border:2px solid var(--border);background:var(--surface);font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;position:relative;color:var(--text-secondary)}
+.dot-btn.current{border-color:var(--primary);background:#eff6ff;color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,.18)}
+.dot-btn.correct-answer{background:#d1fae5!important;border-color:#059669!important;color:#065f46!important}
+.dot-btn.wrong-answer{background:#fee2e2!important;border-color:#dc2626!important;color:#991b1b!important}
+.dot-btn.attempted{background:#dbeafe!important;border-color:#3b82f6!important;color:#1e40af!important}
+.bookmark-indicator{position:absolute;top:-3px;right:-3px;width:11px;height:11px;background:var(--marked);border-radius:50%;border:2px solid #fff}
+
+.stats-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 12px;margin:4px 10px 0;background:var(--surface);border-radius:10px;border:1px solid var(--border);flex-shrink:0;font-size:.72rem;font-weight:600;flex-wrap:wrap}
+.stats-item{display:flex;align-items:center;gap:4px;color:var(--text-secondary)}
+.stats-item.correct{color:var(--correct)}.stats-item.wrong{color:var(--wrong)}.stats-item.unanswered{color:var(--unattempted)}.stats-item.bookmarked{color:var(--marked)}
+.review-wrong-btn{background:#fef2f2;border:1.5px solid #fca5a5;color:#dc2626;font-size:.68rem;font-weight:700;padding:4px 10px;border-radius:16px;cursor:pointer}
+
+.bottom-nav{display:flex;align-items:center;justify-content:space-between;gap:5px;padding:7px 9px;margin:0 10px 10px;background:var(--surface);border-radius:14px;border:1px solid var(--border);flex-shrink:0}
+.nav-btn{width:40px;height:40px;border-radius:9px;border:1.5px solid var(--border);background:#f8fafc;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.88rem;color:var(--text-secondary);flex-shrink:0}
+.nav-btn.next-btn{background:var(--primary);color:#fff;border-color:var(--primary)}
+.nav-btn.bookmark-nav-btn{background:#fef3c7;border-color:#fcd34d;color:#b45309}
+.nav-btn.bookmark-nav-btn.active{background:linear-gradient(135deg,#fbbf24,#f59e0b);border-color:#f59e0b;color:#fff}
+.score-badge{font-size:.8rem;font-weight:700;color:var(--primary);background:#eff6ff;padding:7px 12px;border-radius:9px;border:1.5px solid #bfdbfe;white-space:nowrap}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(15,23,42,.7);display:flex;align-items:center;justify-content:center;z-index:200;padding:18px;backdrop-filter:blur(4px)}
+.modal-card{background:#fff;border-radius:18px;padding:22px;max-width:420px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.2);max-height:90vh;overflow-y:auto}
+.modal-card h3{font-size:1.2rem;font-weight:800;margin-bottom:10px}
+.modal-card .modal-body{font-size:.9rem;color:var(--text-secondary);margin-bottom:18px;line-height:1.55;text-align:left;background:#f8fafc;padding:14px;border-radius:10px;border:1px solid var(--border);word-break:break-word}
+.modal-card button.btn-primary{width:100%;padding:13px;background:var(--primary);color:#fff;border:none;border-radius:11px;font-weight:600;font-size:.9rem;cursor:pointer}
+.modal-card.custom-dialog .modal-body{text-align:center;background:none;border:none;padding:0 8px;color:var(--text-secondary)}
+.dialog-actions{display:flex;gap:10px}
+.btn-outline{width:100%;padding:13px;background:#fff;color:var(--text);border:2px solid var(--border);border-radius:11px;font-weight:600;font-size:.9rem;cursor:pointer}
+
+.bottom-sheet{position:fixed;inset:0;top:auto;background:#fff;border-radius:22px 22px 0 0;max-height:85vh;overflow-y:auto;z-index:180;padding:18px;box-shadow:0 -8px 40px rgba(0,0,0,.15);transform:translateY(100%);transition:transform .3s cubic-bezier(.16,1,.3,1);display:none}
+.bottom-sheet.show{transform:translateY(0);display:block}
+.sheet-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;position:sticky;top:0;background:#fff;padding-bottom:10px;z-index:1;border-bottom:1px solid var(--border)}
+.sheet-header h3{font-size:1.08rem;font-weight:700;font-family:'Poppins',sans-serif}
+.close-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border);background:#f8fafc;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text-secondary)}
+
+.fullscreen-reader{position:fixed;inset:0;background:#fff;z-index:250;display:none;flex-direction:column}
+.fullscreen-reader .reader-header{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;border-bottom:1px solid var(--border);background:#f8fafc;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.reader-header h3{font-family:'Poppins',sans-serif;font-size:1.05rem;color:var(--text);margin:0}
+.reader-header .right-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.reader-nav-group{display:flex;align-items:center;gap:5px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:3px 6px}
+.reader-nav-btn{width:28px;height:28px;border-radius:8px;border:none;background:#eff6ff;color:var(--primary);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.72rem}
+.reader-nav-btn:disabled{opacity:.35;cursor:default}
+.reader-nav-pos{font-size:.68rem;font-weight:800;color:var(--text-secondary);min-width:44px;text-align:center}
+.reader-lock-btn{width:28px;height:28px;border-radius:8px;border:1px solid var(--border);background:#fff;color:var(--text-secondary);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.72rem}
+.reader-lock-btn.active{background:#fef3c7;border-color:#f59e0b;color:#b45309}
+.reader-close-btn{width:32px;height:32px;border-radius:9px;background:#e2e8f0;border:1px solid #cbd5e1;display:flex;align-items:center;justify-content:center;color:var(--text-secondary);cursor:pointer;flex-shrink:0}
+.fullscreen-reader .reader-content{flex:1;overflow-y:auto;padding:14px 12px;width:100%}
+
+.hl-btn{width:24px;height:24px;border-radius:50%;border:2px solid #fff;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hl-btn.armed{transform:scale(1.15);box-shadow:0 0 0 2px rgba(37,99,235,.5)}
+.hl-yellow{background:#fef08a}.hl-green{background:#bbf7d0}.hl-blue{background:#bfdbfe}.hl-pink{background:#fbcfe8}
+.hl-eraser{background:#f1f5f9;border:1px solid var(--border);color:#64748b;font-size:.68rem}
+.highlighter-tools{display:flex;gap:5px;align-items:center;background:#fff;padding:3px 7px;border-radius:10px;border:1px solid var(--border);flex-wrap:wrap}
+.user-highlight{display:inline!important;border-radius:2px;padding:0!important;line-height:inherit!important;background-clip:padding-box!important;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+.stat-box{background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center}
+.stat-val{font-size:1.6rem;font-weight:800;font-family:'Poppins',sans-serif;margin-bottom:3px}
+.stat-label{font-size:.7rem;color:var(--text-secondary);text-transform:uppercase;font-weight:600;letter-spacing:.4px}
+
+.loader-overlay{position:fixed;inset:0;background:rgba(255,255,255,.9);z-index:999;display:none;flex-direction:column;align-items:center;justify-content:center}
+.spinner{width:38px;height:38px;border:4px solid var(--primary-light);border-top:4px solid var(--primary);border-radius:50%;animation:spin 1s linear infinite;margin-bottom:14px}
+@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.mini-toast{position:fixed;bottom:70px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;font-size:.72rem;font-weight:700;padding:8px 14px;border-radius:20px;z-index:1100;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s}
+.mini-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+.set-list-grid{display:grid;grid-template-columns:1fr;gap:10px;padding:4px 2px}
+.set-pick-btn{display:flex;align-items:center;gap:12px;padding:14px 14px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;text-align:left;font-family:inherit;transition:all .15s}
+.set-pick-btn:active{transform:scale(.98)}
+.set-pick-btn .spb-icon{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1rem;color:#fff;flex-shrink:0;background:linear-gradient(135deg,#3b82f6,#1d4ed8)}
+.set-pick-btn .spb-text{flex:1;min-width:0}
+.set-pick-btn .spb-text h4{font-family:'Poppins',sans-serif;font-size:.9rem;font-weight:700;color:#1e293b;margin-bottom:3px}
+.set-pick-btn .spb-text p{font-size:.72rem;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.set-pick-btn .spb-count{font-size:.66rem;font-weight:800;color:#4f46e5;background:#eef2ff;padding:3px 9px;border-radius:20px;flex-shrink:0}
+
+.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:4px 2px}
+.settings-item{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:14px 12px;background:#f8fafc;border:1.5px solid var(--border);border-radius:14px;cursor:pointer;font-family:inherit;text-align:left}
+.settings-item i{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,#eef2ff,#e0e7ff);color:#4f46e5;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.settings-item b{font-size:.8rem;font-weight:700;color:#1e293b;display:block}
+.settings-item small{font-size:.65rem;color:#94a3b8;font-weight:500}
+.settings-item.danger i{background:linear-gradient(135deg,#fef2f2,#fee2e2);color:#dc2626}
+.settings-item.study i{background:linear-gradient(135deg,#faf5ff,#f3e8ff);color:#7c3aed}
+.settings-item.reader i{background:linear-gradient(135deg,#ecfdf5,#d1fae5);color:#059669}
+
+.wrong-card{background:#fff;border-radius:14px;padding:16px;margin-bottom:14px;border:1px solid var(--border)}
+.wrong-card .wc-head{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.wrong-card .wc-meta{font-size:.62rem;font-weight:800;letter-spacing:.4px;text-transform:uppercase;padding:3px 9px;border-radius:20px;background:#f1f5f9;color:var(--text-secondary)}
+.wr-remove{margin-left:auto;background:none;border:1.5px solid var(--border);width:26px;height:26px;border-radius:8px;color:#94a3b8;cursor:pointer;font-size:.75rem;display:flex;align-items:center;justify-content:center}
+.wr-question{font-size:.9rem;font-weight:600;color:var(--text);line-height:1.55;margin-bottom:8px}
+.wr-options{display:flex;flex-direction:column;gap:5px;margin-bottom:10px}
+.wr-opt{display:flex;align-items:flex-start;gap:8px;padding:8px 10px;border-radius:8px;font-size:.8rem;line-height:1.45;background:#f8fafc;border:1px solid var(--border)}
+.wr-opt .wr-l{width:22px;height:22px;border-radius:6px;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:800;color:var(--text-secondary);flex-shrink:0}
+.wr-opt.correct{background:var(--correct-bg);border-color:var(--correct)}
+.wr-opt.correct .wr-l{background:var(--correct);color:#fff}
+.wr-opt.wrong{background:var(--wrong-bg);border-color:var(--wrong)}
+.wr-opt.wrong .wr-l{background:var(--wrong);color:#fff}
+.wr-explain{margin-top:8px;padding:10px 12px;background:#f0fdf4;border-left:3px solid var(--correct);border-radius:8px;font-size:.78rem;line-height:1.6;color:#166534}
+.wr-explain b{display:block;margin-bottom:4px;color:#14532d;font-size:.7rem;text-transform:uppercase;letter-spacing:.4px}
+.wr-empty{text-align:center;padding:44px 20px;color:#94a3b8;font-size:.88rem}
+
+.theme-chip{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:3px 9px;border-radius:20px;background:linear-gradient(135deg,#eef2ff,#e0e7ff);color:#4f46e5;margin-bottom:8px}
+</style>
+</head>
+<body>
+<input type="file" id="importFile" accept=".json" style="display:none" />
+
+<div class="loader-overlay" id="loader"><div class="spinner"></div><p style="font-weight:600;color:var(--text-secondary)" id="loaderText">Loading…</p></div>
+<div id="miniToast" class="mini-toast"></div>
+
+<div id="customAlertModal" class="modal-overlay" style="display:none;z-index:9999">
+  <div class="modal-card custom-dialog">
+    <h3 id="alertTitle">Notice</h3>
+    <div class="modal-body" id="alertMessage"></div>
+    <button class="btn-primary" onclick="closeCustomAlert()">OK</button>
+  </div>
+</div>
+<div id="customConfirmModal" class="modal-overlay" style="display:none;z-index:9999">
+  <div class="modal-card custom-dialog">
+    <h3 id="confirmTitle">Confirm</h3>
+    <div class="modal-body" id="confirmMessage"></div>
+    <div class="dialog-actions">
+      <button class="btn-outline" id="confirmNoBtn" onclick="handleConfirm(false)">Cancel</button>
+      <button class="btn-primary" id="confirmYesBtn" onclick="handleConfirm(true)">Yes, Proceed</button>
+    </div>
+  </div>
+</div>
+<div id="customPromptModal" class="modal-overlay" style="display:none;z-index:9999">
+  <div class="modal-card" style="text-align:left">
+    <h3 id="promptTitle" style="text-align:center">Add Note</h3>
+    <div class="modal-body" id="promptMessage" style="text-align:center;background:none;border:none;padding:0;margin-bottom:12px"></div>
+    <textarea id="promptInput" placeholder="Type…" style="width:100%;height:130px;padding:14px;border:2px solid var(--border);border-radius:10px;resize:none;margin-bottom:14px;font-family:inherit;font-size:.9rem;outline:none"></textarea>
+    <div class="dialog-actions">
+      <button class="btn-outline" onclick="closePrompt()">Cancel</button>
+      <button class="btn-primary" onclick="submitPrompt()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="app-container" id="appContainer">
+
+  <!-- WELCOME -->
+  <div id="welcomeScreen" class="screen active">
+    <div class="welcome-hero">
+      <div class="brand-lockup">
+        <div class="brand-icon-sm"><i class="fa-solid fa-landmark-flag"></i></div>
+        <div class="brand-text">
+          <span class="brand-mcq">MCQ</span>
+          <span class="brand-astra">ASTRA</span>
+        </div>
+      </div>
+      <div class="brand-sub">UGC NET · Political Science</div>
+    </div>
+
+    <div class="welcome-stats">
+      <div class="wstat" onclick="openWrongReview()">
+        <div class="wstat-val" style="color:#dc2626" id="wstatWrong">0</div>
+        <div class="wstat-lbl">Wrong</div>
+      </div>
+      <div class="wstat">
+        <div class="wstat-val" style="color:#2563eb" id="wstatTotal">—</div>
+        <div class="wstat-lbl">Questions</div>
+      </div>
+      <div class="wstat">
+        <div class="wstat-val" style="color:#d97706" id="wstatBookmarks">0</div>
+        <div class="wstat-lbl">Bookmarks</div>
+      </div>
+    </div>
+
+    <div class="section-title">Choose a Section</div>
+    <div class="mode-cards" id="sectionCards">
+      <div class="mode-card s1" onclick="openSectionPicker('SECTION 1')">
+        <div class="mode-icon"><i class="fa-solid fa-book-bookmark"></i></div>
+        <div class="mode-text"><h3>Theme Based Tests</h3><p>11 sets · Political Theory, WPT, IPT, CP, PA, IR, Indian Polity</p><span class="mode-count" id="cnt-s1">— Qs</span></div>
+      </div>
+      <div class="mode-card s2" onclick="openSectionPicker('SECTION 2')">
+        <div class="mode-icon"><i class="fa-solid fa-shuffle"></i></div>
+        <div class="mode-text"><h3>Mixed Theme Tests</h3><p>12 sets · Cross-topic comprehensive</p><span class="mode-count" id="cnt-s2">— Qs</span></div>
+      </div>
+      <div class="mode-card s3" onclick="openSectionPicker('SECTION 3')">
+        <div class="mode-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div class="mode-text"><h3>CUET PG Model Papers</h3><p>2 model papers · 75 Qs each</p><span class="mode-count" id="cnt-s3">— Qs</span></div>
+      </div>
+    </div>
+
+    <div class="section-title">Tools</div>
+    <div class="tools-section">
+      <div class="tool-btn" onclick="openWrongReview()" style="background:linear-gradient(135deg,#fef2f2,#fee2e2);border-color:#fca5a5">
+        <i class="fa-solid fa-circle-exclamation" style="color:#dc2626"></i>
+        <h4 style="color:#991b1b">Review Wrong</h4>
+      </div>
+      <div class="tool-btn" onclick="openBookmarksReview()" style="background:linear-gradient(135deg,#fef3c7,#fde68a);border-color:#fcd34d">
+        <i class="fa-solid fa-bookmark" style="color:#b45309"></i>
+        <h4 style="color:#78350f">Bookmarks</h4>
+      </div>
+      <div class="tool-btn" onclick="showAnalytics()"><i class="fa-solid fa-chart-pie"></i><h4>Analytics</h4></div>
+      <div class="tool-btn" onclick="exportData()"><i class="fa-solid fa-cloud-arrow-down"></i><h4>Backup DB</h4></div>
+      <div class="tool-btn" onclick="document.getElementById('importFile').click()"><i class="fa-solid fa-cloud-arrow-up"></i><h4>Restore</h4></div>
+      <div class="tool-btn" onclick="resetAllProgress()" style="background:linear-gradient(135deg,#fef2f2,#fee2e2);border-color:#fca5a5"><i class="fa-solid fa-trash" style="color:#dc2626"></i><h4 style="color:#991b1b">Reset All</h4></div>
+    </div>
+
+    <div style="padding:14px 18px;text-align:center;font-size:.68rem;color:#94a3b8">
+      Source: Objective Political Science · 2022 Edition
+    </div>
+  </div>
+
+  <!-- ANALYTICS -->
+  <div id="analyticsScreen" class="screen" style="background:#fff">
+    <div class="sheet-header" style="padding:14px 18px;margin-bottom:16px">
+      <h3>📊 Performance Analytics</h3>
+      <button class="close-btn" onclick="goHome()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div style="padding:0 18px;max-width:800px;margin:0 auto;width:100%;flex:1">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+        <div class="stat-box" style="border-color:#bfdbfe;background:#eff6ff"><div class="stat-val" style="color:var(--primary)" id="statTotal">0</div><div class="stat-label">Attempted</div></div>
+        <div class="stat-box" style="border-color:#a7f3d0;background:#ecfdf5"><div class="stat-val" style="color:var(--correct)" id="statAcc">0%</div><div class="stat-label">Accuracy</div></div>
+        <div class="stat-box" style="border-color:#a7f3d0"><div class="stat-val" style="color:var(--correct)" id="statRight">0</div><div class="stat-label">Correct</div></div>
+        <div class="stat-box" style="border-color:#fca5a5"><div class="stat-val" style="color:var(--wrong)" id="statWrong">0</div><div class="stat-label">Wrong</div></div>
+      </div>
+      <h4 style="margin:18px 0 8px;font-weight:700;font-size:.9rem">Set Performance</h4>
+      <div id="setStatsBreakdown" style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px"></div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quizScreen" class="screen" style="overflow:hidden">
+    <div class="header">
+      <div class="header-left">
+        <button class="home-btn" onclick="goHome()"><i class="fa-solid fa-house"></i></button>
+        <div class="header-title">
+          <h2>MCQ ASTRA <span class="study-badge-inline" id="studyBadgeInline">📖 STUDY</span></h2>
+          <p id="currentModeLabel">UGC NET Pol Sci</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn desktop-toggle" id="desktopToggleBtn" onclick="toggleDesktopView()"><i class="fa-solid fa-desktop" id="desktopToggleIcon"></i></button>
+        <button class="icon-btn" id="togglePaletteBtn" onclick="togglePalette()" style="display:none"><i class="fa-solid fa-table-cells"></i></button>
+        <button class="icon-btn study-toggle" id="studyToggleBtn" onclick="requestStudyMode()"><i class="fa-solid fa-graduation-cap"></i></button>
+        <button class="icon-btn reader-mode" onclick="openFullscreenReader()"><i class="fa-solid fa-book-open"></i></button>
+        <button class="icon-btn bookmark-btn" id="bookmarkBtn" onclick="toggleBookmark(true)"><i class="fa-regular fa-bookmark" id="bookmarkIcon"></i></button>
+        <button class="icon-btn lifeline" id="lifelineBtn"><i class="fa-solid fa-wand-magic-sparkles"></i></button>
+        <button class="icon-btn retake" onclick="retakeQuiz()"><i class="fa-solid fa-rotate-right"></i></button>
+        <button class="icon-btn settings-btn" onclick="openQuizSettings()"><i class="fa-solid fa-gear"></i></button>
+      </div>
+    </div>
+    <div id="lifelineDropdown" class="bottom-sheet" style="top:auto;height:auto;max-height:none;border-radius:14px;left:auto;right:14px;top:62px;width:190px;padding:6px;transform:none;display:none;box-shadow:0 8px 30px rgba(0,0,0,.15)">
+      <button id="btn5050" style="display:flex;align-items:center;gap:9px;width:100%;padding:11px 13px;border:none;background:none;font-size:.82rem;cursor:pointer;text-align:left;border-radius:8px;font-weight:600;color:#334155">🎯 <span>50:50 Eliminator</span></button>
+      <button id="btnExpert" style="display:flex;align-items:center;gap:9px;width:100%;padding:11px 13px;border:none;background:none;font-size:.82rem;cursor:pointer;text-align:left;border-radius:8px;font-weight:600;color:#334155">👔 <span>Direct Explanation</span></button>
+    </div>
+    <div class="main-content" id="mainContent">
+      <div id="quizArea">
+        <div id="questionAndOptionsContainer">
+          <div class="question-card" ondblclick="openFullscreenReader()" title="Double click to read fullscreen">
+            <div id="questionDisplay" style="position:relative"></div>
+          </div>
+          <div id="optionsDisplay"></div>
+          <div id="studyExplanationSlot"></div>
+        </div>
+      </div>
+      <div class="desktop-sidebar-wrapper hidden" id="desktopSidebarWrapper">
+        <h3 class="desktop-sidebar-title">📋 Question Palette</h3>
+        <div class="dots-container" id="dotsDisplay"></div>
+      </div>
+      <div id="endScreen" style="display:none;text-align:center;padding:36px 16px;max-width:500px;margin:0 auto">
+        <div style="font-size:3.6rem;margin-bottom:14px">🏆</div>
+        <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:6px">Set Completed!</h2>
+        <p style="color:#64748b;margin-bottom:20px">You've reached the end.</p>
+        <button onclick="goHome()" style="padding:12px 26px;background:var(--primary);color:#fff;border:none;border-radius:28px;font-weight:600;font-size:.88rem;cursor:pointer;width:100%;margin-bottom:10px">Return to Dashboard</button>
+        <button onclick="retakeQuiz()" style="padding:12px 26px;border:2px solid var(--border);border-radius:28px;background:#fff;font-weight:600;font-size:.88rem;cursor:pointer;width:100%">Restart this Set</button>
+      </div>
+    </div>
+    <div class="stats-bar" id="statsBar">
+      <span class="stats-item correct"><i class="fa-solid fa-check-circle"></i> <span id="statCorrectCount">0</span></span>
+      <span class="stats-item wrong"><i class="fa-solid fa-xmark-circle"></i> <span id="statWrongCount">0</span></span>
+      <span class="stats-item unanswered"><i class="fa-regular fa-circle"></i> <span id="statUnansweredCount">0</span></span>
+      <span class="stats-item bookmarked"><i class="fa-solid fa-bookmark"></i> <span id="statBookmarkedCount">0</span></span>
+      <button class="review-wrong-btn" onclick="openReviewWrong()">📋 Review Incorrect</button>
+    </div>
+    <div class="bottom-nav">
+      <button class="nav-btn" id="btnPrev"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="nav-btn" id="btnPalette"><i class="fa-solid fa-table-cells"></i></button>
+      <div class="score-badge" id="scoreDisplay">1/10</div>
+      <button class="nav-btn bookmark-nav-btn" id="btnBookmarkNav" title="Bookmark (B)"><i class="fa-regular fa-bookmark" id="bookmarkNavIcon"></i></button>
+      <button class="nav-btn next-btn" id="btnNext"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- EXPLANATION MODAL -->
+<div id="explanationModal" class="modal-overlay" style="display:none">
+  <div class="modal-card">
+    <h3 id="explanationTitle"></h3>
+    <div class="modal-body" id="explanationBody"></div>
+    <button class="btn-primary" id="explanationNextBtn">Next Question →</button>
+  </div>
+</div>
+
+<!-- NOTES MODAL -->
+<div id="notesModal" class="modal-overlay" style="display:none;z-index:300">
+  <div class="modal-card">
+    <div class="sheet-header" style="border-bottom:none;margin-bottom:6px">
+      <h3 style="margin-bottom:0">📝 My Notes</h3>
+      <button class="close-btn" onclick="closeNotesModal()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <textarea id="notesTextarea" placeholder="Jot down important points…" style="width:100%;height:160px;padding:14px;border:2px solid var(--border);border-radius:10px;resize:none;margin-bottom:14px;font-family:inherit;font-size:.88rem;outline:none"></textarea>
+    <button class="btn-primary" onclick="saveNotes()">Save Note</button>
+  </div>
+</div>
+
+<!-- QUIZ SETTINGS -->
+<div id="quizSettingsSheet" class="bottom-sheet" style="height:auto;max-height:85vh">
+  <div class="sheet-header">
+    <h3>⚙️ Quiz Settings</h3>
+    <button class="close-btn" onclick="closeSheet('quizSettingsSheet')"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="settings-grid">
+    <button class="settings-item study" onclick="closeSheet('quizSettingsSheet');setTimeout(()=>requestStudyMode(),200)">
+      <i class="fa-solid fa-graduation-cap"></i><div><b>Study Mode</b><small>Reveal correct answer instantly</small></div>
+    </button>
+    <button class="settings-item reader" onclick="closeSheet('quizSettingsSheet');setTimeout(()=>openFullscreenReader(),200)">
+      <i class="fa-solid fa-book-open"></i><div><b>Reading Mode</b><small>Distraction-free fullscreen</small></div>
+    </button>
+    <button class="settings-item" onclick="closeSheet('quizSettingsSheet');setTimeout(()=>use5050(),200)">
+      <i class="fa-solid fa-wand-magic-sparkles"></i><div><b>50:50 Eliminator</b><small>Remove 2 wrong options</small></div>
+    </button>
+    <button class="settings-item" onclick="closeSheet('quizSettingsSheet');setTimeout(()=>useExpert(),200)">
+      <i class="fa-solid fa-user-tie"></i><div><b>Expert Advice</b><small>Show answer + explanation</small></div>
+    </button>
+    <button class="settings-item danger" onclick="closeSheet('quizSettingsSheet');setTimeout(()=>retakeQuiz(),200)">
+      <i class="fa-solid fa-rotate-right"></i><div><b>Retake Set</b><small>Restart from beginning</small></div>
+    </button>
+    <button class="settings-item" onclick="closeSheet('quizSettingsSheet');setTimeout(()=>toggleDesktopView(),200)">
+      <i class="fa-solid fa-desktop"></i><div><b>Desktop View</b><small>Switch layout mode</small></div>
+    </button>
+  </div>
+</div>
+
+<!-- SET PICKER SHEET -->
+<div id="setPickerSheet" class="bottom-sheet" style="height:auto;max-height:85vh">
+  <div class="sheet-header">
+    <h3 id="setPickerTitle">Choose a Set</h3>
+    <button class="close-btn" onclick="closeSheet('setPickerSheet')"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div id="setPickerGrid" class="set-list-grid"></div>
+</div>
+
+<!-- PALETTE SHEET -->
+<div id="paletteSheet" class="bottom-sheet">
+  <div class="sheet-header"><h3>📋 Question Palette</h3><button class="close-btn" onclick="closeSheet('paletteSheet')"><i class="fa-solid fa-xmark"></i></button></div>
+  <div id="paletteGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:7px"></div>
+</div>
+
+<!-- FULLSCREEN READER -->
+<div id="fullscreenReader" class="fullscreen-reader">
+  <div class="reader-header">
+    <h3>📖 Reading Mode</h3>
+    <div class="right-controls">
+      <div class="reader-nav-group">
+        <button class="reader-nav-btn" id="readerPrevBtn" onclick="readerNav(-1)" title="Prev (0)"><i class="fa-solid fa-chevron-left"></i></button>
+        <span class="reader-nav-pos" id="readerNavPos">1/1</span>
+        <button class="reader-nav-btn" id="readerNextBtn" onclick="readerNav(1)" title="Next (9)"><i class="fa-solid fa-chevron-right"></i></button>
+        <div style="width:1px;height:14px;background:var(--border);margin:0 2px"></div>
+        <button class="reader-lock-btn" id="readerLockBtn" onclick="toggleReaderNavLock()"><i class="fa-solid fa-lock-open" id="readerLockIcon"></i></button>
+      </div>
+      <div class="highlighter-tools">
+        <span style="font-size:.7rem;color:#64748b;font-weight:600">Highlight:</span>
+        <button class="hl-btn hl-yellow" data-color="#fef08a" onclick="selectHighlightColor(this)"></button>
+        <button class="hl-btn hl-green" data-color="#bbf7d0" onclick="selectHighlightColor(this)"></button>
+        <button class="hl-btn hl-blue" data-color="#bfdbfe" onclick="selectHighlightColor(this)"></button>
+        <button class="hl-btn hl-pink" data-color="#fbcfe8" onclick="selectHighlightColor(this)"></button>
+        <button class="hl-btn hl-eraser" data-color="transparent" onclick="selectHighlightColor(this)"><i class="fa-solid fa-eraser"></i></button>
+      </div>
+      <button class="reader-close-btn" onclick="closeFullscreenReader()" title="Close (7)"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+  </div>
+  <div class="reader-content" id="readerContent"></div>
+</div>
+
+<!-- REVIEW WRONG SHEET (session) -->
+<div id="reviewWrongSheet" class="bottom-sheet" style="height:85vh">
+  <div class="sheet-header"><h3>❌ Incorrect Answers (this session)</h3><button class="close-btn" onclick="closeSheet('reviewWrongSheet')"><i class="fa-solid fa-xmark"></i></button></div>
+  <div id="reviewWrongList" style="max-width:800px;margin:0 auto"></div>
+</div>
+
+<!-- WRONG CAROUSEL (persisted) -->
+<div id="wrongCarousel" class="fullscreen-reader">
+  <div class="reader-header">
+    <h3>❌ Wrong Questions</h3>
+    <div class="right-controls">
+      <div class="reader-nav-group">
+        <button class="reader-nav-btn" id="wrongPrevBtn" onclick="wrongNav(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+        <span class="reader-nav-pos" id="wrongNavPos">0/0</span>
+        <button class="reader-nav-btn" id="wrongNextBtn" onclick="wrongNav(1)"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+      <button class="reader-close-btn" onclick="closeWrongCarousel()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+  </div>
+  <div class="reader-content" id="wrongCarouselContent"></div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+// ================= STATE =================
+const STATE = {
+  all: [],
+  currentMode: null,     // "SECTION 1::SET 1"
+  questions: [],
+  currentIdx: 0,
+  session: [],
+  isAnswered: false,
+  studyMode: false,
+  studyExplain: true,
+  armedColor: null,
+  readerScrollPos: 0,
+  lastReaderIdx: -1
+};
+const DB_NAME = 'PolSciAstraDB', STORE_NAME = 'progress', WRONG_STORE = 'wrongQuestions';
+let readerNavLocked = sessionStorage.getItem('polsci_readerNavLocked') === '1';
+let bookmarkToastShown = localStorage.getItem('polsci_bookmarkToastShown') === 'true';
+let totalAnsweredGlobally = parseInt(localStorage.getItem('polsci_totalAnswered')) || 0;
+
+// ================= HELPERS =================
+const $ = id => document.getElementById(id);
+const esc = s => String(s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function showLoader(t){ $('loaderText').textContent = t; $('loader').style.display = 'flex'; }
+function hideLoader(){ $('loader').style.display = 'none'; }
+function switchScreen(id){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); $(id).classList.add('active'); if(id==='welcomeScreen') refreshWelcomeStats(); }
+window.goHome = function(){ if(STATE.currentMode) saveProgress(); switchScreen('welcomeScreen'); updateWrongChip(); };
+
+let miniToastTimer = null;
+function showMiniToast(txt){ const t = $('miniToast'); t.textContent = txt; t.classList.add('show'); clearTimeout(miniToastTimer); miniToastTimer = setTimeout(()=>t.classList.remove('show'),1500); }
+
+// ================= CUSTOM MODALS =================
+window.showCustomAlert = (t,m) => { $('alertTitle').innerHTML = t; $('alertMessage').innerHTML = m; $('customAlertModal').style.display='flex'; };
+window.closeCustomAlert = () => { $('customAlertModal').style.display='none'; };
+let confirmCallback = null;
+window.showCustomConfirm = (t,m,cb,yes,no) => { $('confirmTitle').innerHTML=t; $('confirmMessage').innerHTML=m; confirmCallback=cb; $('confirmYesBtn').textContent=yes||'Yes, Proceed'; $('confirmNoBtn').textContent=no||'Cancel'; $('customConfirmModal').style.display='flex'; };
+window.handleConfirm = r => { $('customConfirmModal').style.display='none'; confirmCallback && confirmCallback(r); confirmCallback=null; };
+let promptCallback = null;
+window.showCustomPrompt = (title,msg,ph,cb) => { $('promptTitle').textContent=title; $('promptMessage').textContent=msg||''; $('promptInput').placeholder=ph||'Type…'; $('promptInput').value=''; promptCallback=cb; $('customPromptModal').style.display='flex'; setTimeout(()=>$('promptInput').focus(),80); };
+window.closePrompt = () => { $('customPromptModal').style.display='none'; promptCallback=null; };
+window.submitPrompt = () => { const v = $('promptInput').value.trim(); const cb=promptCallback; $('customPromptModal').style.display='none'; promptCallback=null; if(cb) cb(v); };
+
+// ================= INDEXEDDB =================
+function initDB(){ return new Promise((res,rej)=>{ const r = indexedDB.open(DB_NAME,1); r.onupgradeneeded = e => { const d = e.target.result; if(!d.objectStoreNames.contains(STORE_NAME)) d.createObjectStore(STORE_NAME); if(!d.objectStoreNames.contains(WRONG_STORE)) d.createObjectStore(WRONG_STORE,{keyPath:'id'}); }; r.onsuccess = e => res(e.target.result); r.onerror = e => rej(e); }); }
+async function saveState(key,data){ const db = await initDB(); return new Promise((res,rej)=>{ const tx=db.transaction(STORE_NAME,'readwrite'); tx.objectStore(STORE_NAME).put(data,key); tx.oncomplete=()=>res(); tx.onerror=()=>rej(); }); }
+async function loadState(key){ const db = await initDB(); return new Promise(res=>{ const tx=db.transaction(STORE_NAME,'readonly'); const r = tx.objectStore(STORE_NAME).get(key); r.onsuccess = e => res(e.target.result||null); r.onerror = () => res(null); }); }
+async function getAllStates(){ const db = await initDB(); return new Promise(res=>{ const tx = db.transaction(STORE_NAME,'readonly'); const st = tx.objectStore(STORE_NAME); const rq = st.getAll(); const kq = st.getAllKeys(); rq.onsuccess = () => { kq.onsuccess = () => { const o = {}; kq.result.forEach((k,i)=>o[k]=rq.result[i]); res(o); }; }; }); }
+async function getAllWrong(){ const db = await initDB(); return new Promise(res=>{ const rq = db.transaction(WRONG_STORE,'readonly').objectStore(WRONG_STORE).getAll(); rq.onsuccess=()=>res(rq.result||[]); rq.onerror=()=>res([]); }); }
+async function removeWrongQuestion(id){ const db = await initDB(); return new Promise((res,rej)=>{ const tx = db.transaction(WRONG_STORE,'readwrite'); tx.objectStore(WRONG_STORE).delete(id); tx.oncomplete=()=>res(); tx.onerror=()=>rej(); }); }
+async function clearWrong(){ const db = await initDB(); return new Promise((res,rej)=>{ const tx = db.transaction(WRONG_STORE,'readwrite'); tx.objectStore(WRONG_STORE).clear(); tx.oncomplete=()=>res(); tx.onerror=()=>rej(); }); }
+async function addOrIncrementWrong(id,mode,q,chosen){
+  const db = await initDB();
+  return new Promise(res=>{
+    const tx = db.transaction(WRONG_STORE,'readwrite');
+    const st = tx.objectStore(WRONG_STORE);
+    const rq = st.get(id);
+    rq.onsuccess = () => {
+      const prev = rq.result;
+      const entry = {
+        id, mode,
+        section: q.section, theme: q.theme, set: q.set,
+        qNum: q.qNum, question: q.question, options: q.options,
+        correct: q.correct, chosen,
+        explain: q.explain || '',
+        firstWrong: prev ? prev.firstWrong : Date.now(),
+        lastWrong: Date.now(),
+        wrongCount: (prev ? prev.wrongCount : 0) + 1
+      };
+      st.put(entry);
+    };
+    tx.oncomplete = res; tx.onerror = res;
+  });
+}
+function wrongId(mode,q){ const base = String(q.question||'').slice(0,140) + '|' + q.options.length + '|' + q.correct; let h = 5381; for(let i=0;i<base.length;i++){ h = ((h<<5)+h) + base.charCodeAt(i); h |= 0; } return mode + '::' + h; }
+async function toggleBookmarkDB(id,q,on){
+  const db = await initDB();
+  return new Promise(res=>{
+    const tx = db.transaction(WRONG_STORE,'readwrite');
+    const st = tx.objectStore(WRONG_STORE);
+    if(!on){ // remove bookmark only; but keep if it's a wrong question too — easier: keep marker
+      tx.oncomplete = res; return;
+    }
+    const rq = st.get(id);
+    rq.onsuccess = () => {
+      const prev = rq.result;
+      st.put({
+        id, mode: q._mode || 'bm', section: q.section, theme: q.theme, set: q.set,
+        qNum: q.qNum, question: q.question, options: q.options,
+        correct: q.correct, chosen: null, explain: q.explain||'',
+        firstWrong: prev?prev.firstWrong:Date.now(), lastWrong: prev?prev.lastWrong:0,
+        wrongCount: prev?prev.wrongCount:0,
+        bookmarked: true, bookmarkAt: Date.now()
+      });
+    };
+    tx.oncomplete = res; tx.onerror = res;
+  });
+}
+
+// ================= DATA LOADING =================
+// Expected data.json: array of {id, section, theme, set, question, options:[...], correctOption:"A"|"B"..., explanation}
+function normalizeQuestion(raw, idx){
+  const opts = Array.isArray(raw.options) ? raw.options.map(o => String(o)) : [];
+  // strip "A. " / "A) " prefixes
+  const stripped = opts.map(o => o.replace(/^\s*[A-J]\s*[\.\)]\s*/, ''));
+  // map correctOption letter to index
+  let ci = 0;
+  const co = raw.correctOption || raw.correct || raw.answer;
+  if(typeof co === 'string'){
+    const ch = co.trim().toUpperCase().charAt(0);
+    const n = ch.charCodeAt(0) - 65;
+    if(n >= 0 && n < stripped.length) ci = n;
+  } else if(typeof co === 'number'){
+    ci = Math.max(0, Math.min(stripped.length-1, co));
+  }
+  return {
+    _id: idx,
+    _mode: (raw.section||'UNKNOWN') + '::' + (raw.set || raw.theme || 'SET'),
+    qNum: raw.id != null ? raw.id : (idx+1),
+    section: raw.section || 'SECTION 1',
+    theme: raw.theme || '',
+    set: raw.set || '',
+    question: raw.question || '',
+    options: stripped.length ? stripped : ['—'],
+    correct: ci,
+    explain: raw.explanation || ''
+  };
+}
+
+async function loadAllData(){
+  showLoader('Loading question bank…');
+  try{
+    const res = await fetch('data.json', {cache:'no-store'});
+    if(!res.ok) throw new Error('data.json not found');
+    const raw = await res.json();
+    if(!Array.isArray(raw)) throw new Error('data.json must be an array');
+    STATE.all = raw.map(normalizeQuestion);
+    const counts = { 'SECTION 1':0, 'SECTION 2':0, 'SECTION 3':0 };
+    STATE.all.forEach(q => { if(counts[q.section] !== undefined) counts[q.section]++; });
+    $('cnt-s1').innerHTML = '<i class="fa-solid fa-list-ol"></i> ' + counts['SECTION 1'] + ' Qs';
+    $('cnt-s2').innerHTML = '<i class="fa-solid fa-list-ol"></i> ' + counts['SECTION 2'] + ' Qs';
+    $('cnt-s3').innerHTML = '<i class="fa-solid fa-list-ol"></i> ' + counts['SECTION 3'] + ' Qs';
+    $('wstatTotal').textContent = STATE.all.length;
+  }catch(e){
+    showCustomAlert('Data error', 'Could not load data.json.<br><br><small>' + esc(e.message) + '</small>');
+  }finally{ hideLoader(); }
+}
+
+// ================= SECTION / SET PICKER =================
+function setsInSection(sec){
+  const map = new Map();
+  STATE.all.filter(q => q.section === sec).forEach(q => {
+    const key = q.set || q.theme || 'SET';
+    if(!map.has(key)) map.set(key, { name:key, theme:q.theme, count:0 });
+    map.get(key).count++;
+  });
+  return [...map.values()].sort((a,b)=>{
+    const na = parseInt((a.name.match(/\d+/)||[0])[0],10);
+    const nb = parseInt((b.name.match(/\d+/)||[0])[0],10);
+    if(na !== nb) return na - nb;
+    return a.name.localeCompare(b.name);
+  });
+}
+
+window.openSectionPicker = function(sec){
+  const list = setsInSection(sec);
+  const title = sec === 'SECTION 1' ? 'Theme Based Tests' : sec === 'SECTION 2' ? 'Mixed Theme Tests' : 'CUET PG Model Papers';
+  $('setPickerTitle').textContent = title;
+  const g = $('setPickerGrid');
+  g.innerHTML = '';
+  list.forEach((s, i) => {
+    const b = document.createElement('button');
+    b.className = 'set-pick-btn';
+    const iconColor = sec === 'SECTION 1' ? 'linear-gradient(135deg,#3b82f6,#1d4ed8)' : sec === 'SECTION 2' ? 'linear-gradient(135deg,#8b5cf6,#6d28d9)' : 'linear-gradient(135deg,#f59e0b,#d97706)';
+    b.innerHTML = `
+      <div class="spb-icon" style="background:${iconColor}"><i class="fa-solid fa-list-check"></i></div>
+      <div class="spb-text">
+        <h4>${esc(s.name)}</h4>
+        <p>${esc(s.theme || title)}</p>
+      </div>
+      <span class="spb-count">${s.count} Qs</span>
+    `;
+    b.onclick = () => { closeSheet('setPickerSheet'); startQuiz(sec, s.name); };
+    g.appendChild(b);
+  });
+  openSheet('setPickerSheet');
+};
+
+// ================= QUIZ =================
+window.startQuiz = async function(sec, setName){
+  showLoader('Loading set…');
+  const modeKey = sec + '::' + setName;
+  STATE.currentMode = modeKey;
+  STATE.questions = STATE.all.filter(q => q.section === sec && (q.set || q.theme || 'SET') === setName)
+                            .map((q, i) => ({...q, _idx: i}));
+  if(!STATE.questions.length){ hideLoader(); showCustomAlert('Empty','This set has no questions.'); return; }
+  STATE.questions.forEach(q => { q._mode = modeKey; });
+  const label = sec === 'SECTION 1' ? 'Theme' : sec === 'SECTION 2' ? 'Mixed' : 'CUET PG';
+  $('currentModeLabel').textContent = label + ' · ' + setName + ' · ' + STATE.questions.length + ' Qs';
+  try{
+    const saved = await loadState(modeKey);
+    if(saved && saved.session && saved.session.length === STATE.questions.length){
+      STATE.session = saved.session;
+      STATE.currentIdx = saved.idx || 0;
+    } else {
+      STATE.session = STATE.questions.map(() => ({ sel:null, ok:null, mark:false, note:null }));
+      STATE.currentIdx = 0;
+    }
+  }catch(e){
+    STATE.session = STATE.questions.map(() => ({ sel:null, ok:null, mark:false, note:null }));
+    STATE.currentIdx = 0;
+  }
+  switchScreen('quizScreen');
+  $('quizArea').style.display = '';
+  $('desktopSidebarWrapper').style.display = '';
+  $('dotsDisplay').style.display = '';
+  $('endScreen').style.display = 'none';
+  $('statsBar').style.opacity = '1';
+  renderQuestion();
+  updateStatsBar();
+  hideLoader();
+};
+
+async function saveProgress(){ if(!STATE.currentMode) return; await saveState(STATE.currentMode, { idx: STATE.currentIdx, session: STATE.session }); }
+
+// ================= RENDER =================
+function renderQuestion(){
+  const q = STATE.questions[STATE.currentIdx];
+  if(!q) return;
+  STATE.isAnswered = false;
+  const st = STATE.session[STATE.currentIdx];
+  // question header
+  const chip = q.theme ? `<span class="theme-chip">${esc(q.theme)}</span>` : '';
+  $('questionDisplay').innerHTML = `${chip}<div class="question-text"><span class="q-number">Q${esc(String(q.qNum))}.</span> ${esc(q.question)}</div>`;
+  // options
+  const oa = $('optionsDisplay');
+  oa.innerHTML = '';
+  q.options.forEach((o,i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.id = 'optBtn' + i;
+    btn.innerHTML = `<span class="option-letter">${String.fromCharCode(65+i)}</span><span style="flex:1">${esc(o)}</span>`;
+    if(STATE.studyMode){
+      btn.disabled = true;
+      if(i === q.correct) btn.classList.add('study-correct-preview');
+    } else if(st.sel !== null){
+      btn.disabled = true;
+      if(i === st.sel && !st.ok) btn.classList.add('wrong');
+      if(i === q.correct) btn.classList.add('correct');
+      STATE.isAnswered = true;
+    } else {
+      btn.addEventListener('click', () => handleOptionClick(i));
+    }
+    oa.appendChild(btn);
+  });
+  renderStudyExplanation();
+  renderDots();
+  updateBookmarkIcon();
+  $('scoreDisplay').textContent = `${STATE.currentIdx+1}/${STATE.questions.length}`;
+  $('mainContent').scrollTop = 0;
+  updateStatsBar();
+}
+
+function renderStudyExplanation(){
+  const slot = $('studyExplanationSlot');
+  if(!slot) return;
+  slot.innerHTML = '';
+  if(!STATE.studyMode) return;
+  const q = STATE.questions[STATE.currentIdx];
+  if(!q) return;
+  const panel = document.createElement('div');
+  panel.className = 'study-explanation-panel';
+  let html = '<div class="sep-head"><i class="fa-solid fa-lightbulb"></i> Correct Answer</div>';
+  html += '<div class="sep-correct"><span class="sep-tag">CORRECT</span><span>Option ' + String.fromCharCode(65+q.correct) + ' — ' + esc(q.options[q.correct]) + '</span></div>';
+  if(STATE.studyExplain){
+    html += q.explain ? '<div class="sep-body">' + esc(q.explain) + '</div>' : '<div class="sep-body" style="font-style:italic;color:#94a3b8">No detailed explanation provided.</div>';
+  }
+  panel.innerHTML = html;
+  slot.appendChild(panel);
+}
+
+function renderDots(){
+  const c = $('dotsDisplay');
+  c.innerHTML = '';
+  STATE.questions.forEach((_, i) => {
+    const st = STATE.session[i];
+    const dot = document.createElement('button');
+    dot.className = 'dot-btn';
+    dot.textContent = i+1;
+    if(i === STATE.currentIdx) dot.classList.add('current');
+    if(st.sel !== null){
+      if(st.ok === true) dot.classList.add('correct-answer');
+      else dot.classList.add('wrong-answer');
+    } else dot.classList.add('unattempted');
+    if(st.mark) dot.innerHTML += '<span class="bookmark-indicator"></span>';
+    dot.onclick = () => jumpTo(i);
+    c.appendChild(dot);
+  });
+  setTimeout(() => { const cd = c.querySelector('.dot-btn.current'); if(cd) cd.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'}); }, 80);
+}
+
+function updateStatsBar(){
+  const s = STATE.session;
+  $('statCorrectCount').textContent = s.filter(x => x.ok === true).length;
+  $('statWrongCount').textContent = s.filter(x => x.ok === false).length;
+  $('statUnansweredCount').textContent = s.filter(x => x.sel === null).length;
+  $('statBookmarkedCount').textContent = s.filter(x => x.mark).length;
+}
+
+function updateBookmarkIcon(){
+  const st = STATE.session[STATE.currentIdx];
+  const on = !!(st && st.mark);
+  const set = (el, cls) => { if(!el) return; el.classList.toggle(cls||'active', on); };
+  set($('bookmarkBtn'), 'active');
+  set($('btnBookmarkNav'), 'active');
+  $('bookmarkIcon').className = on ? 'fa-solid fa-bookmark' : 'fa-regular fa-bookmark';
+  $('bookmarkNavIcon').className = on ? 'fa-solid fa-bookmark' : 'fa-regular fa-bookmark';
+}
+
+// ================= ANSWER FLOW =================
+function handleOptionClick(idx){
+  if(STATE.isAnswered || STATE.studyMode) return;
+  if(STATE.questions[STATE.currentIdx].options[idx] === undefined) return;
+  document.querySelectorAll('#optionsDisplay .option-btn').forEach(b => b.classList.remove('selected'));
+  const btn = $('optBtn' + idx);
+  if(btn) btn.classList.add('selected');
+  setTimeout(() => lockAnswer(idx), 260);
+}
+function lockAnswer(idx){
+  if(STATE.isAnswered || STATE.studyMode) return;
+  STATE.isAnswered = true;
+  const q = STATE.questions[STATE.currentIdx];
+  const ok = idx === q.correct;
+  STATE.session[STATE.currentIdx].sel = idx;
+  STATE.session[STATE.currentIdx].ok = ok;
+  const wid = wrongId(STATE.currentMode, q);
+  if(!ok) addOrIncrementWrong(wid, STATE.currentMode, q, idx).then(() => updateWrongChip());
+  else removeWrongQuestion(wid).then(() => updateWrongChip()).catch(()=>{});
+  document.querySelectorAll('#optionsDisplay .option-btn').forEach(b => b.disabled = true);
+  const sb = $('optBtn' + idx);
+  const cb = $('optBtn' + q.correct);
+  if(ok){ sb && sb.classList.add('correct'); }
+  else { sb && sb.classList.add('wrong'); cb && cb !== sb && cb.classList.add('correct'); }
+  renderDots();
+  updateStatsBar();
+  saveProgress();
+  totalAnsweredGlobally++;
+  localStorage.setItem('polsci_totalAnswered', totalAnsweredGlobally);
+  setTimeout(() => showExplanationModal(ok), 450);
+}
+
+function showExplanationModal(ok, expert=false){
+  const q = STATE.questions[STATE.currentIdx];
+  $('explanationTitle').innerHTML = expert ? '👔 Expert Advice' : (ok ? '✅ Excellent!' : '❌ Incorrect');
+  let html = `<div style="margin-bottom:10px"><b>Correct Answer:</b> Option ${String.fromCharCode(65+q.correct)} — ${esc(q.options[q.correct]||'')}</div>`;
+  html += q.explain
+    ? `<div style="padding-top:8px;border-top:1px dashed #cbd5e1"><b>Explanation:</b><br/>${esc(q.explain)}</div>`
+    : `<div style="padding-top:8px;border-top:1px dashed #cbd5e1;font-style:italic;color:#64748b">No explanation provided.</div>`;
+  $('explanationBody').innerHTML = html;
+  $('explanationNextBtn').textContent = STATE.currentIdx >= STATE.questions.length-1 ? 'Finish Set' : 'Next Question →';
+  $('explanationModal').style.display = 'flex';
+}
+
+// ================= NAVIGATION =================
+window.goNext = function(){
+  $('explanationModal').style.display = 'none';
+  if(STATE.currentIdx < STATE.questions.length - 1){
+    STATE.currentIdx++;
+    renderQuestion();
+    saveProgress();
+    if($('fullscreenReader').style.display === 'flex'){ STATE.lastReaderIdx = -1; openFullscreenReader(); }
+  } else showEndScreen();
+};
+window.goPrev = function(){
+  $('explanationModal').style.display = 'none';
+  if(STATE.currentIdx > 0){
+    STATE.currentIdx--;
+    renderQuestion();
+    saveProgress();
+    if($('fullscreenReader').style.display === 'flex'){ STATE.lastReaderIdx = -1; openFullscreenReader(); }
+  }
+};
+function jumpTo(i){ if(i >= 0 && i < STATE.questions.length){ STATE.currentIdx = i; renderQuestion(); saveProgress(); } }
+
+function showEndScreen(){
+  $('quizArea').style.display = 'none';
+  $('desktopSidebarWrapper').style.display = 'none';
+  $('endScreen').style.display = 'block';
+  $('statsBar').style.opacity = '0.5';
+}
+window.retakeQuiz = function(){
+  showCustomConfirm('Restart','Erase progress and restart this set?', r => {
+    if(!r) return;
+    STATE.session = STATE.questions.map(() => ({ sel:null, ok:null, mark:false, note:null }));
+    STATE.currentIdx = 0;
+    saveProgress();
+    $('quizArea').style.display = '';
+    $('desktopSidebarWrapper').style.display = '';
+    $('endScreen').style.display = 'none';
+    $('statsBar').style.opacity = '1';
+    renderQuestion();
+    updateStatsBar();
+  });
+};
+
+// ================= BOOKMARK =================
+function toggleBookmark(visual){
+  const st = STATE.session[STATE.currentIdx];
+  if(!st) return;
+  st.mark = !st.mark;
+  const q = STATE.questions[STATE.currentIdx];
+  q._mode = STATE.currentMode;
+  toggleBookmarkDB(wrongId(STATE.currentMode, q), q, st.mark).then(()=>updateWrongChip());
+  updateBookmarkIcon();
+  renderDots();
+  updateStatsBar();
+  saveProgress();
+  if(st.mark && visual !== false && !bookmarkToastShown){
+    showMiniToast('🔖 Bookmarked');
+    localStorage.setItem('polsci_bookmarkToastShown','true');
+    bookmarkToastShown = true;
+  }
+}
+
+// ================= STUDY MODE =================
+window.requestStudyMode = function(){
+  if(STATE.studyMode){
+    STATE.studyMode = false;
+    $('studyToggleBtn').classList.remove('active');
+    $('studyBadgeInline').classList.remove('show');
+    renderQuestion();
+    return;
+  }
+  showCustomConfirm('📖 Study Mode','Do you want to see the explanation along with the correct answer?', withExp => {
+    STATE.studyMode = true;
+    STATE.studyExplain = withExp;
+    $('studyToggleBtn').classList.add('active');
+    $('studyBadgeInline').classList.add('show');
+    renderQuestion();
+  }, 'Yes, with Explanation', 'No, Just Answer');
+};
+
+// ================= LIFELINES =================
+$('lifelineBtn').addEventListener('click', e => {
+  e.stopPropagation();
+  const dd = $('lifelineDropdown');
+  dd.style.display = dd.style.display === 'block' ? 'none' : 'block';
+});
+document.addEventListener('click', e => {
+  const dd = $('lifelineDropdown'), lb = $('lifelineBtn');
+  if(dd.style.display === 'block' && !dd.contains(e.target) && e.target !== lb && !lb.contains(e.target)) dd.style.display = 'none';
+});
+window.use5050 = function(){
+  $('lifelineDropdown').style.display = 'none';
+  if(!STATE.currentMode){ showCustomAlert('No quiz','Open a quiz first.'); return; }
+  if(STATE.isAnswered || STATE.studyMode){ showCustomAlert('Not available', STATE.studyMode ? 'Study mode is ON.' : 'Question already answered.'); return; }
+  const q = STATE.questions[STATE.currentIdx];
+  const wrong = q.options.map((_,i)=>i).filter(i => i !== q.correct);
+  wrong.sort(() => Math.random() - .5);
+  wrong.slice(0,2).forEach(i => { const b = $('optBtn'+i); if(b){ b.style.opacity = '0.3'; b.disabled = true; } });
+  showMiniToast('🎯 50:50 applied');
+};
+window.useExpert = function(){
+  $('lifelineDropdown').style.display = 'none';
+  if(!STATE.currentMode || !STATE.questions[STATE.currentIdx]){ showCustomAlert('No quiz','Open a quiz first.'); return; }
+  showExplanationModal(false,true);
+};
+
+// ================= QUIZ SETTINGS =================
+window.openQuizSettings = () => openSheet('quizSettingsSheet');
+
+// ================= READER MODE =================
+window.openFullscreenReader = function(){
+  const q = STATE.questions[STATE.currentIdx];
+  if(!q) return;
+  const st = STATE.session[STATE.currentIdx];
+  STATE.armedColor = null;
+  const isNew = STATE.lastReaderIdx !== STATE.currentIdx;
+  if(isNew){ STATE.readerScrollPos = 0; STATE.lastReaderIdx = STATE.currentIdx; }
+  const chip = q.theme ? `<span class="theme-chip">${esc(q.theme)}</span><br>` : '';
+  let html = chip;
+  html += `<h3 style="color:var(--text);margin-bottom:10px;font-weight:700;font-size:.95rem">Question ${esc(String(q.qNum))}</h3>`;
+  html += `<div id="readerQuestion" class="highlightable" style="font-size:1rem;margin-bottom:16px;line-height:1.6">${esc(q.question)}</div>`;
+  html += '<div class="options-list" id="readerOptions" style="margin-bottom:24px">';
+  q.options.forEach((o,i) => {
+    let extra = '';
+    if(STATE.studyMode && i === q.correct) extra = 'study-correct-preview';
+    else if(st.sel !== null){ if(i === st.sel && !st.ok) extra = 'wrong'; if(i === q.correct) extra = 'correct'; }
+    const dis = (STATE.studyMode || st.sel !== null) ? 'disabled' : '';
+    html += `<button class="option-btn ${extra}" id="readerOptBtn${i}" onclick="handleReaderOptionClick(${i})" ${dis}><span class="option-letter">${String.fromCharCode(65+i)}</span><span style="flex:1">${esc(o)}</span></button>`;
+  });
+  html += '</div>';
+  if(STATE.studyMode && (q.explain || q.correct !== undefined)){
+    html += '<div class="study-explanation-panel" style="margin-top:20px">';
+    html += '<div class="sep-head"><i class="fa-solid fa-lightbulb"></i> Correct Answer</div>';
+    html += '<div class="sep-correct"><span class="sep-tag">CORRECT</span><span>Option ' + String.fromCharCode(65+q.correct) + ' — ' + esc(q.options[q.correct]) + '</span></div>';
+    if(STATE.studyExplain){ html += q.explain ? ('<div class="sep-body">' + esc(q.explain) + '</div>') : ''; }
+    html += '</div>';
+  }
+  const rc = $('readerContent');
+  rc.innerHTML = html;
+  $('fullscreenReader').style.display = 'flex';
+  rc.scrollTop = STATE.readerScrollPos || 0;
+  updateReaderNavUI();
+  updateReaderLockUI();
+};
+window.closeFullscreenReader = function(){
+  STATE.readerScrollPos = $('readerContent').scrollTop || 0;
+  $('fullscreenReader').style.display = 'none';
+  STATE.armedColor = null;
+  const sel = window.getSelection(); sel && sel.removeAllRanges();
+};
+window.readerNav = function(dir){
+  if(!STATE.questions.length) return;
+  const t = STATE.currentIdx + dir;
+  if(t < 0 || t >= STATE.questions.length) return;
+  STATE.currentIdx = t;
+  STATE.lastReaderIdx = -1;
+  renderQuestion();
+  saveProgress();
+  openFullscreenReader();
+};
+function updateReaderNavUI(){
+  $('readerNavPos').textContent = (STATE.currentIdx+1)+'/'+STATE.questions.length;
+  $('readerPrevBtn').disabled = STATE.currentIdx <= 0;
+  $('readerNextBtn').disabled = STATE.currentIdx >= STATE.questions.length - 1;
+}
+window.toggleReaderNavLock = function(){
+  readerNavLocked = !readerNavLocked;
+  sessionStorage.setItem('polsci_readerNavLocked', readerNavLocked ? '1' : '0');
+  updateReaderLockUI();
+};
+function updateReaderLockUI(){
+  const b = $('readerLockBtn'), ic = $('readerLockIcon');
+  b.classList.toggle('active', readerNavLocked);
+  ic.className = readerNavLocked ? 'fa-solid fa-lock' : 'fa-solid fa-lock-open';
+}
+window.handleReaderOptionClick = function(idx){
+  if(STATE.isAnswered || STATE.studyMode) return;
+  if(STATE.questions[STATE.currentIdx].options[idx] === undefined) return;
+  document.querySelectorAll('#readerContent .option-btn').forEach(b => b.classList.remove('selected'));
+  const b = $('readerOptBtn'+idx);
+  if(b) b.classList.add('selected');
+  setTimeout(() => { lockAnswer(idx); setTimeout(() => openFullscreenReader(), 500); }, 260);
+};
+
+// ================= HIGHLIGHTING =================
+function getHighlightable(node){
+  let el = (node && node.nodeType === 3) ? node.parentElement : node;
+  while(el && el !== document.body){ if(el.classList && el.classList.contains('highlightable')) return el; el = el.parentElement; }
+  return null;
+}
+function rangeFromPoint(x,y){
+  if(document.caretRangeFromPoint) return document.caretRangeFromPoint(x,y);
+  if(document.caretPositionFromPoint){ const p = document.caretPositionFromPoint(x,y); if(!p) return null; const r = document.createRange(); r.setStart(p.offsetNode,p.offset); r.collapse(true); return r; }
+  return null;
+}
+function wrapRange(range,color){
+  if(!range || range.collapsed) return false;
+  const s = document.createElement('span');
+  s.className = 'user-highlight';
+  s.style.backgroundColor = color;
+  try{ range.surroundContents(s); return true; }
+  catch(e){
+    try{
+      const walker = document.createTreeWalker(range.commonAncestorContainer, NodeFilter.SHOW_TEXT, {
+        acceptNode: nd => range.intersectsNode(nd) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT
+      });
+      let n, nodes = [];
+      while(n = walker.nextNode()) nodes.push(n);
+      let ok = false;
+      nodes.forEach(tn => {
+        const nr = document.createRange(); nr.selectNodeContents(tn);
+        const st = nr.compareBoundaryPoints(Range.START_TO_START, range) < 0 ? range.startOffset : 0;
+        const en = nr.compareBoundaryPoints(Range.END_TO_END, range) > 0 ? range.endOffset : tn.length;
+        if(st < en){
+          const pr = document.createRange(); pr.setStart(tn, st); pr.setEnd(tn, en);
+          try{ const s2 = document.createElement('span'); s2.className = 'user-highlight'; s2.style.backgroundColor = color; pr.surroundContents(s2); ok = true; }catch(e2){}
+        }
+      });
+      return ok;
+    }catch(e2){ return false; }
+  }
+}
+let pendingRange = null, pendingContainer = null, pendingTime = 0;
+document.addEventListener('selectionchange', () => {
+  const sel = window.getSelection();
+  if(sel && sel.rangeCount > 0 && !sel.isCollapsed){
+    const r = sel.getRangeAt(0);
+    const c = getHighlightable(r.commonAncestorContainer);
+    if(c){ try{ pendingRange = r.cloneRange(); pendingContainer = c; pendingTime = Date.now(); }catch(e){} }
+  }
+});
+window.selectHighlightColor = function(btn){
+  const color = btn.dataset.color;
+  let range = null, container = null;
+  const sel = window.getSelection();
+  if(sel && sel.rangeCount > 0 && !sel.isCollapsed){
+    const r = sel.getRangeAt(0);
+    const c = getHighlightable(r.commonAncestorContainer);
+    if(c){ range = r; container = c; }
+  }
+  if(!range && pendingRange && (Date.now() - pendingTime < 4000)){ range = pendingRange; container = pendingContainer; }
+  if(range){
+    if(color === 'transparent'){
+      // quick erase: unwrap overlapping spans
+      const spans = container.querySelectorAll('.user-highlight');
+      let erased = false;
+      spans.forEach(sp => {
+        const sr = document.createRange(); sr.selectNodeContents(sp);
+        if(range.compareBoundaryPoints(Range.END_TO_START, sr) <= 0 && range.compareBoundaryPoints(Range.START_TO_END, sr) >= 0){
+          const p = sp.parentNode;
+          while(sp.firstChild) p.insertBefore(sp.firstChild, sp);
+          p.removeChild(sp); erased = true;
+        }
+      });
+      if(erased) container.normalize();
+    } else {
+      wrapRange(range, color);
+    }
+    sel && sel.removeAllRanges();
+    pendingRange = null; pendingContainer = null;
+    STATE.armedColor = color;
+    updateHLUI();
+    return;
+  }
+  STATE.armedColor = (STATE.armedColor === color) ? null : color;
+  updateHLUI();
+};
+function updateHLUI(){
+  document.querySelectorAll('.hl-btn').forEach(b => { if(b.dataset.color) b.classList.toggle('armed', STATE.armedColor === b.dataset.color); });
+}
+let hlGesture = {active:false, mode:null, sx:0, sy:0, anchor:null, container:null};
+const rc = document.getElementById('readerContent');
+rc.addEventListener('touchstart', e => {
+  if(!STATE.armedColor) return;
+  const t = e.touches[0]; if(!t) return;
+  const target = document.elementFromPoint(t.clientX, t.clientY);
+  const c = target ? getHighlightable(target) : null;
+  if(!c) return;
+  hlGesture.active = true; hlGesture.mode = null;
+  hlGesture.sx = t.clientX; hlGesture.sy = t.clientY;
+  hlGesture.container = c;
+  hlGesture.anchor = rangeFromPoint(t.clientX, t.clientY);
+}, {passive:true});
+rc.addEventListener('touchmove', e => {
+  if(!hlGesture.active) return;
+  const t = e.touches[0]; if(!t) return;
+  const dx = t.clientX - hlGesture.sx, dy = t.clientY - hlGesture.sy;
+  if(hlGesture.mode === null){
+    if(Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
+    hlGesture.mode = Math.abs(dx) > Math.abs(dy) ? 'highlight' : 'scroll';
+    if(hlGesture.mode === 'scroll'){ hlGesture.active = false; return; }
+  }
+  if(hlGesture.mode === 'highlight'){
+    e.preventDefault();
+    const cr = rangeFromPoint(t.clientX, t.clientY);
+    if(!cr || !hlGesture.anchor) return;
+    const r = document.createRange();
+    try{
+      if(hlGesture.anchor.compareBoundaryPoints(Range.START_TO_START, cr) <= 0){
+        r.setStart(hlGesture.anchor.startContainer, hlGesture.anchor.startOffset);
+        r.setEnd(cr.startContainer, cr.startOffset);
+      } else {
+        r.setStart(cr.startContainer, cr.startOffset);
+        r.setEnd(hlGesture.anchor.startContainer, hlGesture.anchor.startOffset);
+      }
+      const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    }catch(e2){}
+  }
+}, {passive:false});
+rc.addEventListener('touchend', () => {
+  if(hlGesture.active && hlGesture.mode === 'highlight'){
+    const sel = window.getSelection();
+    if(sel && sel.rangeCount > 0 && !sel.isCollapsed){
+      wrapRange(sel.getRangeAt(0), STATE.armedColor);
+      sel.removeAllRanges();
+    }
+  }
+  hlGesture.active = false; hlGesture.mode = null;
+});
+
+// ================= SHEETS =================
+window.openSheet = id => { const s = $(id); s.style.display = 'block'; void s.offsetWidth; s.classList.add('show'); };
+window.closeSheet = id => { const s = $(id); s.classList.remove('show'); setTimeout(() => s.style.display = 'none', 280); };
+window.togglePalette = () => $('desktopSidebarWrapper').classList.toggle('hidden');
+window.buildPalette = function(){
+  const g = $('paletteGrid'); g.innerHTML = '';
+  STATE.questions.forEach((_, i) => {
+    const st = STATE.session[i];
+    const d = document.createElement('button');
+    d.className = 'dot-btn';
+    d.style.width = '100%'; d.style.aspectRatio = '1';
+    d.textContent = i + 1;
+    if(i === STATE.currentIdx) d.classList.add('current');
+    if(st.sel !== null){ if(st.ok === true) d.classList.add('correct-answer'); else d.classList.add('wrong-answer'); }
+    else d.classList.add('unattempted');
+    if(st.mark) d.innerHTML += '<span class="bookmark-indicator"></span>';
+    d.onclick = () => { jumpTo(i); closeSheet('paletteSheet'); };
+    g.appendChild(d);
+  });
+  openSheet('paletteSheet');
+};
+
+// ================= NOTES =================
+window.openNotesModal = function(){
+  const st = STATE.session[STATE.currentIdx]; if(!st) return;
+  $('notesTextarea').value = st.note || '';
+  $('notesModal').style.display = 'flex';
+  setTimeout(() => $('notesTextarea').focus(), 80);
+};
+window.closeNotesModal = () => $('notesModal').style.display = 'none';
+window.saveNotes = function(){
+  const st = STATE.session[STATE.currentIdx]; if(!st) return;
+  st.note = $('notesTextarea').value.trim();
+  saveProgress();
+  closeNotesModal();
+  showMiniToast('📝 Note saved');
+};
+
+// ================= REVIEW (session) =================
+window.openReviewWrong = function(){
+  const l = $('reviewWrongList'); l.innerHTML = '';
+  const wrong = STATE.session.map((st,i)=>({st,i})).filter(x => x.st.ok === false);
+  if(!wrong.length){
+    l.innerHTML = '<div class="wr-empty" style="padding:30px;text-align:center;color:#64748b">No incorrect answers yet! 🎉</div>';
+  } else {
+    wrong.forEach(({st,i}) => {
+      const q = STATE.questions[i];
+      const div = document.createElement('div');
+      div.style.cssText = 'padding:12px;border:1px solid #fecaca;border-radius:12px;background:#fef2f2;cursor:pointer;margin-bottom:8px;display:flex;gap:10px;align-items:flex-start;';
+      div.innerHTML = `<span style="font-size:1.1rem">❌</span><div style="flex:1"><h4 style="font-size:.82rem;font-weight:600;color:#1e293b;margin-bottom:3px">Q${i+1}: ${esc(String(q.question).slice(0,70))}${q.question.length>70?'…':''}</h4><p style="font-size:.72rem;color:#64748b">Your: <b style="color:#dc2626">${String.fromCharCode(65+st.sel)}</b> | Correct: <b style="color:#059669">${String.fromCharCode(65+q.correct)}</b></p></div>`;
+      div.onclick = () => { jumpTo(i); closeSheet('reviewWrongSheet'); };
+      l.appendChild(div);
+    });
+  }
+  openSheet('reviewWrongSheet');
+};
+
+// ================= WRONG CAROUSEL (persisted) =================
+const WRONG_STATE = { items: [], idx: 0 };
+window.openWrongReview = async function(){
+  showLoader('Loading…');
+  try{
+    const all = await getAllWrong();
+    const ws = all.filter(x => x.wrongCount > 0 || (!x.bookmarked && x.chosen != null));
+    ws.sort((a,b) => (b.lastWrong||0) - (a.lastWrong||0));
+    WRONG_STATE.items = ws;
+    WRONG_STATE.idx = 0;
+    if(!ws.length){ showCustomAlert('Nothing here','No wrong questions yet. Keep practicing! 🎉'); hideLoader(); return; }
+    renderWrongCarousel();
+    $('wrongCarousel').style.display = 'flex';
+  }catch(e){ showCustomAlert('Error','Could not load wrong questions.'); }
+  finally{ hideLoader(); }
+};
+window.closeWrongCarousel = () => $('wrongCarousel').style.display = 'none';
+function renderWrongCarousel(){
+  const items = WRONG_STATE.items;
+  const total = items.length;
+  if(!total){ $('wrongCarouselContent').innerHTML = '<div class="wr-empty">No items.</div>'; $('wrongNavPos').textContent = '0/0'; return; }
+  if(WRONG_STATE.idx >= total) WRONG_STATE.idx = total - 1;
+  if(WRONG_STATE.idx < 0) WRONG_STATE.idx = 0;
+  $('wrongNavPos').textContent = (WRONG_STATE.idx+1) + '/' + total;
+  $('wrongPrevBtn').disabled = WRONG_STATE.idx <= 0;
+  $('wrongNextBtn').disabled = WRONG_STATE.idx >= total - 1;
+  const it = items[WRONG_STATE.idx];
+  const optsHtml = (it.options||[]).map((o,i) => {
+    let cls = '';
+    if(i === it.correct) cls = 'correct';
+    else if(i === it.chosen) cls = 'wrong';
+    return `<div class="wr-opt ${cls}"><span class="wr-l">${String.fromCharCode(65+i)}</span><span>${esc(o)}</span></div>`;
+  }).join('');
+  const explain = it.explain ? '<div class="wr-explain"><b>📘 Explanation</b>' + esc(it.explain) + '</div>' : '';
+  $('wrongCarouselContent').innerHTML = `
+    <div class="wrong-card">
+      <div class="wc-head">
+        <span class="wc-meta" style="background:#eef2ff;color:#4f46e5">${esc(it.section || '')}</span>
+        <span class="wc-meta">${esc(it.set || '')}</span>
+        ${it.wrongCount > 1 ? `<span class="wc-meta" style="background:#fee2e2;color:#991b1b">✗ ${it.wrongCount}×</span>` : ''}
+        <button class="wr-remove" onclick="removeWrongFromCarousel('${it.id}')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      ${it.theme ? '<div style="font-size:.68rem;color:#64748b;font-weight:700;text-transform:uppercase;margin-bottom:6px">'+esc(it.theme)+'</div>' : ''}
+      <div class="wr-question">${esc(it.question)}</div>
+      <div class="wr-options">${optsHtml}</div>
+      ${explain}
+    </div>`;
+  $('wrongCarouselContent').scrollTop = 0;
+}
+window.wrongNav = function(dir){
+  const t = WRONG_STATE.idx + dir;
+  if(t < 0 || t >= WRONG_STATE.items.length) return;
+  WRONG_STATE.idx = t;
+  renderWrongCarousel();
+};
+window.removeWrongFromCarousel = function(id){
+  showCustomConfirm('Remove','Remove this from wrong list?', async r => {
+    if(!r) return;
+    await removeWrongQuestion(id);
+    WRONG_STATE.items = WRONG_STATE.items.filter(x => x.id !== id);
+    if(WRONG_STATE.idx >= WRONG_STATE.items.length) WRONG_STATE.idx = Math.max(0, WRONG_STATE.items.length-1);
+    renderWrongCarousel();
+    updateWrongChip();
+  });
+};
+
+// ================= BOOKMARKS REVIEW =================
+window.openBookmarksReview = async function(){
+  showLoader('Loading bookmarks…');
+  try{
+    const all = await getAllWrong();
+    const bm = all.filter(x => x.bookmarked).sort((a,b)=>(b.bookmarkAt||0)-(a.bookmarkAt||0));
+    if(!bm.length){ showCustomAlert('No bookmarks','Tap the 🔖 icon on any question to bookmark it.'); hideLoader(); return; }
+    WRONG_STATE.items = bm;
+    WRONG_STATE.idx = 0;
+    renderBookmarks();
+    $('wrongCarousel').style.display = 'flex';
+  }catch(e){ showCustomAlert('Error','Could not load bookmarks.'); }
+  finally{ hideLoader(); }
+};
+function renderBookmarks(){
+  const items = WRONG_STATE.items;
+  const total = items.length;
+  if(WRONG_STATE.idx >= total) WRONG_STATE.idx = total - 1;
+  if(WRONG_STATE.idx < 0) WRONG_STATE.idx = 0;
+  $('wrongNavPos').textContent = (WRONG_STATE.idx+1)+'/'+total;
+  $('wrongPrevBtn').disabled = WRONG_STATE.idx <= 0;
+  $('wrongNextBtn').disabled = WRONG_STATE.idx >= total - 1;
+  const it = items[WRONG_STATE.idx];
+  const optsHtml = (it.options||[]).map((o,i) => {
+    const cls = (i === it.correct) ? 'correct' : '';
+    return `<div class="wr-opt ${cls}"><span class="wr-l">${String.fromCharCode(65+i)}</span><span>${esc(o)}</span></div>`;
+  }).join('');
+  const explain = it.explain ? '<div class="wr-explain"><b>📘 Explanation</b>' + esc(it.explain) + '</div>' : '';
+  $('wrongCarouselContent').innerHTML = `
+    <div class="wrong-card">
+      <div class="wc-head">
+        <span class="wc-meta" style="background:#fef3c7;color:#b45309">🔖 Bookmark</span>
+        <span class="wc-meta">${esc(it.section || '')}</span>
+        <span class="wc-meta">${esc(it.set || '')}</span>
+      </div>
+      ${it.theme ? '<div style="font-size:.68rem;color:#64748b;font-weight:700;text-transform:uppercase;margin-bottom:6px">'+esc(it.theme)+'</div>' : ''}
+      <div class="wr-question">${esc(it.question)}</div>
+      <div class="wr-options">${optsHtml}</div>
+      ${explain}
+    </div>`;
+  $('wrongCarouselContent').scrollTop = 0;
+}
+
+// ================= ANALYTICS / BACKUP =================
+window.showAnalytics = async function(){
+  showLoader('Crunching…');
+  try{
+    const all = await getAllStates();
+    let tq = 0, cr = 0, wr = 0;
+    let html = '';
+    const keys = Object.keys(all).filter(k => all[k] && all[k].session);
+    keys.sort();
+    for(const k of keys){
+      const d = all[k];
+      const ans = d.session.filter(s => s.sel !== null);
+      if(!ans.length) continue;
+      const c = ans.filter(s => s.ok).length;
+      tq += ans.length; cr += c; wr += ans.length - c;
+      const pct = Math.round(c / ans.length * 100);
+      html += `<div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px;display:flex;align-items:center;gap:10px">
+        <div style="width:44px;height:44px;border-radius:10px;background:#eef2ff;color:#4f46e5;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.78rem">${pct}%</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-weight:600;font-size:.8rem">${esc(k.split('::')[0])} · ${esc(k.split('::')[1])}</div>
+          <div style="font-size:.7rem;color:#64748b">${ans.length} attempted · ${c} correct</div>
+        </div>
+      </div>`;
+    }
+    $('statTotal').textContent = tq;
+    $('statRight').textContent = cr;
+    $('statWrong').textContent = wr;
+    $('statAcc').textContent = tq ? Math.round(cr/tq*100)+'%' : '0%';
+    $('setStatsBreakdown').innerHTML = html || '<p style="font-size:.78rem;color:#64748b">No data yet.</p>';
+    switchScreen('analyticsScreen');
+  }catch(e){ showCustomAlert('Error','Could not load analytics.'); }
+  finally{ hideLoader(); }
+};
+
+window.exportData = async function(){
+  try{
+    const all = await getAllStates();
+    const wrong = await getAllWrong();
+    const payload = { progress: all, wrongQuestions: wrong, exportedAt: new Date().toISOString() };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'PolSciAstra_Backup_' + new Date().toISOString().split('T')[0] + '.json';
+    a.click();
+    URL.revokeObjectURL(url);
+    showCustomAlert('Success','✅ Progress + Wrong Questions backed up!');
+  }catch(e){ showCustomAlert('Error','Failed to export.'); }
+};
+
+document.getElementById('importFile').addEventListener('change', async e => {
+  const f = e.target.files[0]; if(!f) return;
+  showLoader('Restoring…');
+  const rd = new FileReader();
+  rd.onload = async ev => {
+    try{
+      const d = JSON.parse(ev.target.result);
+      if(d.progress && d.wrongQuestions){
+        for(const md of Object.keys(d.progress)) await saveState(md, d.progress[md]);
+        await clearWrong();
+        const db = await initDB();
+        await new Promise(res => {
+          const tx = db.transaction(WRONG_STORE, 'readwrite');
+          const st = tx.objectStore(WRONG_STORE);
+          d.wrongQuestions.forEach(w => st.put(w));
+          tx.oncomplete = res; tx.onerror = res;
+        });
+      } else {
+        for(const md of Object.keys(d)) await saveState(md, d[md]);
+      }
+      showCustomAlert('Success','✅ Progress restored!');
+      document.getElementById('importFile').value = '';
+      updateWrongChip(); refreshWelcomeStats();
+    }catch(er){ showCustomAlert('Error','❌ Invalid backup file.'); }
+    finally{ hideLoader(); }
+  };
+  rd.readAsText(f);
+});
+
+window.resetAllProgress = function(){
+  showCustomConfirm('Reset All','Erase ALL progress, bookmarks and wrong questions? This cannot be undone.', async r => {
+    if(!r) return;
+    try{
+      const db = await initDB();
+      await new Promise(res => { const tx = db.transaction(STORE_NAME,'readwrite'); tx.objectStore(STORE_NAME).clear(); tx.oncomplete = res; });
+      await clearWrong();
+      STATE.session = []; STATE.currentIdx = 0; STATE.currentMode = null;
+      localStorage.removeItem('polsci_totalAnswered');
+      localStorage.removeItem('polsci_bookmarkToastShown');
+      totalAnsweredGlobally = 0; bookmarkToastShown = false;
+      refreshWelcomeStats(); updateWrongChip();
+      showMiniToast('🧹 All progress cleared');
+    }catch(e){ showCustomAlert('Error','Could not reset.'); }
+  });
+};
+
+// ================= CHIPS =================
+async function updateWrongChip(){
+  try{
+    const all = await getAllWrong();
+    const wrong = all.filter(x => x.wrongCount > 0).length;
+    const bm = all.filter(x => x.bookmarked).length;
+    $('wstatWrong').textContent = wrong;
+    $('wstatBookmarks').textContent = bm;
+  }catch(e){}
+}
+async function refreshWelcomeStats(){ await updateWrongChip(); }
+
+// ================= DESKTOP =================
+function detectViewMode(){
+  if(window.innerWidth > 900){
+    document.body.classList.add('desktop-view');
+    $('desktopToggleIcon').className = 'fa-solid fa-mobile-screen';
+    $('togglePaletteBtn').style.display = 'flex';
+  } else {
+    $('togglePaletteBtn').style.display = 'none';
+  }
+}
+window.toggleDesktopView = function(){
+  document.body.classList.toggle('desktop-view');
+  const on = document.body.classList.contains('desktop-view');
+  $('desktopToggleIcon').className = on ? 'fa-solid fa-mobile-screen' : 'fa-solid fa-desktop';
+  $('togglePaletteBtn').style.display = on ? 'flex' : 'none';
+};
+window.addEventListener('resize', () => {
+  if(window.innerWidth > 900){
+    document.body.classList.add('desktop-view');
+    $('desktopToggleIcon').className = 'fa-solid fa-mobile-screen';
+    $('togglePaletteBtn').style.display = 'flex';
+  } else {
+    $('togglePaletteBtn').style.display = 'none';
+  }
+});
+
+// ================= KEYBOARD =================
+document.addEventListener('keydown', e => {
+  const tag = (document.activeElement && document.activeElement.tagName) || '';
+  if(tag === 'TEXTAREA' || tag === 'INPUT') return;
+  const modalOpen = $('explanationModal').style.display === 'flex' ||
+                    $('customAlertModal').style.display === 'flex' ||
+                    $('customConfirmModal').style.display === 'flex' ||
+                    $('customPromptModal').style.display === 'flex' ||
+                    $('notesModal').style.display === 'flex';
+  if(modalOpen && e.key !== 'Escape') return;
+  const readerOpen = $('fullscreenReader').style.display === 'flex';
+  if(readerOpen){
+    if(e.key === 'ArrowRight' || e.key === '9'){ e.preventDefault(); readerNav(1); return; }
+    if(e.key === 'ArrowLeft' || e.key === '0'){ e.preventDefault(); readerNav(-1); return; }
+    if(e.key === '7' || e.key === 'Escape'){ e.preventDefault(); closeFullscreenReader(); return; }
+    if(['1','2','3','4'].includes(e.key)){
+      e.preventDefault();
+      const idx = parseInt(e.key,10) - 1;
+      const q = STATE.questions[STATE.currentIdx];
+      if(q && q.options[idx] !== undefined) handleReaderOptionClick(idx);
+      return;
+    }
+    return;
+  }
+  if($('quizScreen').classList.contains('active')){
+    if(e.key === '9'){ e.preventDefault(); goNext(); return; }
+    if(e.key === '0'){ e.preventDefault(); goPrev(); return; }
+    if(e.key === '7' || e.key === 'Escape'){ e.preventDefault(); goHome(); return; }
+    if(e.key === 'b' || e.key === 'B'){ e.preventDefault(); toggleBookmark(true); return; }
+    if(['1','2','3','4'].includes(e.key)){
+      e.preventDefault();
+      if(!STATE.isAnswered && !STATE.studyMode){
+        const idx = parseInt(e.key,10) - 1;
+        const q = STATE.questions[STATE.currentIdx];
+        if(q && q.options[idx] !== undefined) handleOptionClick(idx);
+      }
+      return;
+    }
+    if(e.key === 'ArrowRight'){ e.preventDefault(); goNext(); return; }
+    if(e.key === 'ArrowLeft'){ e.preventDefault(); goPrev(); return; }
+  }
+});
+
+// ================= BIND =================
+function bindEvents(){
+  $('btnPrev').onclick = goPrev;
+  $('btnNext').onclick = goNext;
+  $('btnPalette').onclick = buildPalette;
+  $('btnBookmarkNav').onclick = () => toggleBookmark(true);
+  $('bookmarkBtn').onclick = () => toggleBookmark(true);
+  $('explanationNextBtn').onclick = goNext;
+  $('btn5050').onclick = use5050;
+  $('btnExpert').onclick = useExpert;
+}
+
+// ================= INIT =================
+window.addEventListener('DOMContentLoaded', async () => {
+  initDB();
+  bindEvents();
+  detectViewMode();
+  switchScreen('welcomeScreen');
+  updateWrongChip();
+  await loadAllData();
+});
+
+})();
+</script>
+</body>
+</html>
